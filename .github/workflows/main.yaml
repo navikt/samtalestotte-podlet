@@ -1,0 +1,84 @@
+name: "Build and deploy samtalestotte-podlet"
+on:
+  push:
+    branches:
+    - "main"
+env:
+  "IMAGE": "ghcr.io/${{ github.repository }}:${{ github.sha }}"
+jobs:
+  "build":
+    name: "build"
+    runs-on: "ubuntu-18.04"
+    steps:
+    - uses: "actions/checkout@v2"
+    - uses: "actions/setup-node@v1"
+    - name: Install dependencies
+        run: |
+          yarn install --frozen-lockfile
+    - name: "run tests"
+      run: "yarn test"
+    - name: "Login to GitHub Docker Registry"
+      uses: "docker/login-action@v1"
+      with:
+        "registry": "ghcr.io"
+        "username": "${{ github.actor }}"
+        "password": "${{ secrets.GITHUB_TOKEN }}"
+    - name: Build application
+        run: |
+          yarn run build
+    - name: "Build and push the Docker image"
+      run: "docker build --pull --tag ${IMAGE} . && docker push ${IMAGE}"
+  "deployAppToDev":
+    name: "Deploy app to dev"
+    needs: "build"
+    runs-on: "ubuntu-18.04"
+    steps:
+    - uses: "actions/checkout@v2"
+    - name: "Deploy to DEV-labs"
+      uses: "nais/deploy/actions/deploy@v1"
+      env:
+        "APIKEY": "${{ secrets.NAIS_DEPLOY_APIKEY }}"
+        "CLUSTER": "labs-gcp"
+        "RESOURCE": ".nais/nais.yaml"
+        "VARS": ".nais/dev.yaml"
+  "deployAppToProd":
+    name: "Deploy app to prod"
+    if: github.ref == 'refs/heads/master'
+    needs: "deployAppToDev"
+    runs-on: "ubuntu-18.04"
+    steps:
+    - uses: "actions/checkout@v2"
+    - name: "Deploy to PROD"
+      uses: "nais/deploy/actions/deploy@v1"
+      env:
+        "APIKEY": "${{ secrets.NAIS_DEPLOY_APIKEY }}"
+        "CLUSTER": "prod-gcp"
+        "RESOURCE": ".nais/nais.yaml"
+        "VARS": ".nais/prod.yaml"
+  "deployAlertsToDev":
+    name: "Deploy alerts to dev"
+    needs: "build"
+    runs-on: "ubuntu-18.04"
+    steps:
+    - uses: "actions/checkout@v2"
+    - name: "Deploy alerts to DEV"
+      uses: "nais/deploy/actions/deploy@v1"
+      env:
+        "APIKEY": "${{ secrets.NAIS_DEPLOY_APIKEY }}"
+        "CLUSTER": "labs-gcp"
+        "RESOURCE": ".nais/alerts-dev.yaml"
+        "VARS": ".nais/dev.yaml"
+  "deployAlertsToProd":
+    name: "Deploy alerts to prod"
+    if: github.ref == 'refs/heads/master'
+    needs: "build"
+    runs-on: "ubuntu-18.04"
+    steps:
+    - uses: "actions/checkout@v2"
+    - name: "Deploy alerts to PROD"
+      uses: "nais/deploy/actions/deploy@v1"
+      env:
+        "APIKEY": "${{ secrets.NAIS_DEPLOY_APIKEY }}"
+        "CLUSTER": "prod-sbs"
+        "RESOURCE": ".nais/alerts-prod.yaml"
+        "VARS": ".nais/prod.yaml"
