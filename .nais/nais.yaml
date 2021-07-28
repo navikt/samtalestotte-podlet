@@ -27,13 +27,6 @@ spec:
   prometheus:
     enabled: true
     path: "/metrics"
-  resources:
-    limits:
-      cpu: "200m"
-      memory: "256Mi"
-    requests:
-      cpu: "200m"
-      memory: "256Mi"
   ingresses:
   {{#each ingresses as |url|}}
     - {{url}}
