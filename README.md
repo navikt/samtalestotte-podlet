@@ -1,46 +1,46 @@
-# Getting Started with Create React App
+# WIP microfrontend for Samtalestøtte podlet
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#WIP utkast README
 
-## Available Scripts
+# Komme i gang
 
-In the project directory, you can run:
+- Installere avhengigheter: `yarn`
+- Starte appen lokalt: Her har man flere muligheter, avhengig av hva man vil.
+    1. Kjøre opp utviklingserver `yarn start`
+    2. Kjøre dev med `yarn run dev`
+- Eventuelt starte appen med Node-serveren: `yarn run build && yarn server`
+- Kjøre applikasjonen med Docker:
+    1. `yarn install && yarn build`
+    2. `docker build -t samtalestotte-podlet .`
+    3. `docker run -d -p 3000:3000 samtalestotte-arbeidsgiver`
+    4. For å stoppe, kjør `docker stop <id>` med id-en fra forrige kommando
 
-### `yarn start`
+## Deploy
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Master branch deployes automatisk til Prod(under arbeid).
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Hvordan deployer man en vis branch?
 
-### `yarn test`
+Oppdater filen `.github/workflows/build-deploy.yml` ved `deploy-to-dev` steg med navn til den branch-en som skal deployes
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+### Lenker til applikasjon
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- i prod(under arbeid): https://arbeidsgiver.nav.no/samtalestotte-arbeidsgiver
+- i dev miljø: https://arbeidsgiver-gcp.dev.nav.no/samtalestotte-arbeidsgiver --trenger #naisdevice kjørende se https://doc.nais.io/device/install/ for info om det
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# Henvendelser
 
-### `yarn eject`
+## For Nav-ansatte
+* Dette Git-repositoriet eies av [Team IA i Produktområde arbeidsgiver](https://navno.sharepoint.com/sites/intranett-prosjekter-og-utvikling/SitePages/Produktomr%C3%A5de-arbeidsgiver.aspx).
+* Slack-kanaler:
+    * [#arbeidsgiver-teamia-utvikling](https://nav-it.slack.com/archives/C016KJA7CFK)
+    * [#arbeidsgiver-utvikling](https://nav-it.slack.com/archives/CD4MES6BB)
+    * [#arbeidsgiver-general](https://nav-it.slack.com/archives/CCM649PDH)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## For folk utenfor Nav
+* Opprett gjerne en issue i Github for alle typer spørsmål
+* IT-utviklerne i Github-teamet https://github.com/orgs/navikt/teams/arbeidsgiver
+* IT-avdelingen i [Arbeids- og velferdsdirektoratet](https://www.nav.no/no/NAV+og+samfunn/Kontakt+NAV/Relatert+informasjon/arbeids-og-velferdsdirektoratet-kontorinformasjon)
