@@ -1,6 +1,8 @@
 FROM navikt/node-express:14
 WORKDIR /usr/src/app
 
+USER apprunner
+
 COPY public/ public/
 
 COPY src/ src/
