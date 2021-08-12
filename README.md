@@ -1,6 +1,6 @@
 # WIP microfrontend for Samtalestøtte podlet
 
-#WIP utkast README
+#WIP App og utkast README
 
 # Komme i gang
 
