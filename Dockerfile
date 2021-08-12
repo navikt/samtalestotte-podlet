@@ -1,4 +1,4 @@
-FROM navikt/node-express:12.2.0-alpine
+FROM navikt/node-express:14
 WORKDIR /usr/src/app
 
 COPY public/ public/
