@@ -1,0 +1,37 @@
+@import '../node_modules/nav-frontend-core/less/core.less';
+@import '../node_modules/nav-frontend-typografi-style/src/index';
+@import '../node_modules/nav-frontend-lenker-style/src/lenker-mixins.less';
+
+@mobile-breakpoint: 576px;
+@tablet-breakpoint: @container-tablet;
+@desktop-breakpoint: @container-desktop;
+@content-max-width: 43.75rem;
+
+@arbeidsgiver-bla: @navBlaLighten80;
+@button-height: 46px;
+
+.sideinnhold-mixin() {
+  background-color: white;
+  padding: 2rem 2rem 3rem;
+  margin: 0 auto 0;
+  border-radius: 0.25rem;
+  max-width: 60rem;
+}
+
+.sidewrapper-mixin() {
+  background-color: @navLysGra;
+  min-height: 50rem;
+  padding: 0 1rem 5rem;
+}
+
+.panel-mixin-podlet() {
+  background: white;
+  border-radius: 0.25rem;
+  margin-top: 1.5rem;
+  padding: 0;
+  width: 100%;
+
+  @media (min-width: @screen-sm-min) {
+    padding: 2rem;
+  }
+}

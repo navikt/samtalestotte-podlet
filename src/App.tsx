@@ -4,9 +4,9 @@ import Samtalestøttepanel from "./Samtalestøttepanel/Samtalestøttepanel";
 
 function App() {
   return (
-    <div className="App">
+
       <Samtalestøttepanel/>
-    </div>
+
   );
 }
 

@@ -5,7 +5,7 @@ import reportWebVitals from './reportWebVitals';
 import Navspa from '@navikt/navspa';
 
 export const AppContainer: FunctionComponent = () => (
-    <div id="rekrutteringsbistand-kandidat" >
+    <div id="samtalestotte-podlet" >
                     <App />
     </div>
 );

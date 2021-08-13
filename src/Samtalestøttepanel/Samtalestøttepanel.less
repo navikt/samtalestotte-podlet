@@ -1,7 +1,10 @@
-@import '../../variables';
-
-.samtalestøttepanel {
-    .panel-mixin();
+@import '../variables';
+.samtalestøttepodletpanel {
+.panel{
+    padding: 0 !important;
+}
+    padding: 0;
+   .panel-mixin-podlet();
 
     &__ingress {
         padding-bottom: 1rem;
@@ -13,7 +16,8 @@
     }
 
     @media (min-width: @screen-sm-min) {
-        flex-direction: row;
-        width: calc(50% - 0.75rem);
+       // flex-direction: row;
+        //width: calc(50% - 0.75rem);
+        .panel-mixin-podlet
     }
 }
