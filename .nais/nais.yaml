@@ -9,7 +9,7 @@ metadata:
 spec:
   image: {{image}}
   team: arbeidsgiver
-  port: 3000
+  port: 3001
   replicas:
     min: 2
     max: 2
