@@ -39,8 +39,7 @@ jobs:
       env:
         "APIKEY": "${{ secrets.NAIS_DEPLOY_APIKEY }}"
         "CLUSTER": "labs-gcp"
-        "RESOURCE": ".nais/nais.yaml"
-        "VARS": ".nais/dev.yaml"
+        "RESOURCE": ".nais/nais-labs.yaml"
   "deployAppToProd":
     name: "Deploy app to prod"
     if: github.ref == 'refs/heads/master'
