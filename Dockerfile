@@ -1,17 +1,17 @@
 FROM navikt/node-express:14
 WORKDIR /var/server
 
-#USER apprunner
+COPY server/ ./server
+COPY build/ ./build
 
-COPY public/ public/
+## Give apprunner rights to application's build & run folders
+USER root
+RUN chown -R apprunner /var/server/build
+RUN chown -R apprunner /var/server/server
+USER apprunner
 
-COPY src/ src/
-COPY package.json package.json
-COPY yarn.lock yarn.lock
-
+WORKDIR /var/server/server
 RUN yarn install --frozen-lockfile
-RUN yarn build
-
 
 EXPOSE 3001
-ENTRYPOINT ["yarn", "start"]
+ENTRYPOINT ["node", "server.js"]

@@ -12,7 +12,7 @@
 - Kjøre applikasjonen med Docker:
     1. `yarn install && yarn build`
     2. `docker build -t samtalestotte-podlet .`
-    3. `docker run -d -p 3000:3000 samtalestotte-podlet`
+    3. `docker run -d -p 3001:3001 samtalestotte-podlet`
     4. For å stoppe, kjør `docker stop <id>` med id-en fra forrige kommando
 
 ## Deploy
