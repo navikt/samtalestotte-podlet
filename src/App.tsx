@@ -2,17 +2,20 @@ import React, {FunctionComponent} from 'react';
 import './App.css';
 import Samtalestøttepanel from "./Samtalestøttepanel/Samtalestøttepanel";
 
-type Props ={
-  orgnr: string;
-  ekstraData: string | null;
-  visningsmodell: string | null;
+export enum Visningsmodus {
+    SNAKKEBOBLE = 'SNAKKEBOBLE',
+    PANEL_MED_IKON_OG_TEKST = 'PANEL_MED_IKON_OG_TEKST'
 }
-const App: FunctionComponent<Props>=(props:Props) =>{
-  return (
 
-      <Samtalestøttepanel orgnr={props.orgnr}/>
+type Props = {
+    visningsmodus: Visningsmodus;
+}
+const App: FunctionComponent<Props> = (props: Props) => {
+    console.log("Visningsmodus i App er: ", props.visningsmodus);
 
-  );
+    return (
+        <Samtalestøttepanel visningsmodus={props.visningsmodus}/>
+    );
 }
 
 export default App;

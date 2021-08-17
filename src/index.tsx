@@ -1,19 +1,24 @@
 import React, {FunctionComponent} from 'react';
 import './index.css';
-import App from './App';
+import App, {Visningsmodus} from './App';
 import reportWebVitals from './reportWebVitals';
 import Navspa from '@navikt/navspa';
 
-type AppProps={
-    orgnr: string;
-    ekstraData :string|null;
-    visningsversjon: string|null;
+type AppProps = {
+    visning: string
 }
-export const AppContainer: FunctionComponent<AppProps> = ({orgnr, ekstraData, visningsversjon}) => (
-    <div id="samtalestotte-podlet" >
-                    <App orgnr={orgnr} ekstraData={ekstraData} visningsmodell={visningsversjon}/>
-    </div>
-);
+export const AppContainer: FunctionComponent<AppProps> = ({visning}) => {
+    const visningsmodus = Visningsmodus[visning as keyof typeof Visningsmodus];
+    console.log("Visning i index.tsx er: ", visning);
+    console.log("Visningsmodus i index.tsx er: ", visningsmodus);
+
+    return (
+        <div id="samtalestotte-podlet">
+            <App visningsmodus={visningsmodus}/>
+        </div>
+    );
+}
+
 Navspa.eksporter('samtalestotte-podlet', AppContainer);
 //ReactDOM.render(<App />, document.getElementById('root'));
 

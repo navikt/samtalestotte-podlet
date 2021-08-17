@@ -6,40 +6,36 @@ import {PaneltittelMedIkon} from '../PaneltittelMedIkon/PaneltittelMedIkon';
 import {PATH_SAMTALESTØTTE} from '../konstanter';
 import classNames from 'classnames';
 import Lenke from 'nav-frontend-lenker';
-//import { useSendNavigereEvent } from '../../amplitude/amplitude';
 import '../InternLenke/InternLenke.less';
+import {Visningsmodus} from "../App";
 
-type SamtalestøttePanelProps ={
-    orgnr : string;
+type SamtalestøttePanelProps = {
+    visningsmodus: Visningsmodus;
 }
-const Samtalestøttepanel: FunctionComponent<SamtalestøttePanelProps> = ({orgnr}) => {
-   // const sendNavigereEvent = useSendNavigereEvent();
+
+const Samtalestøttepanel: FunctionComponent<SamtalestøttePanelProps> = ({visningsmodus}) => {
     const lenkeTekst = 'Gå til samtalestøtten';
 
-    return (
-        <>
-            <PaneltittelMedIkon src={lampeSvg} alt="lampeikon">
-                {`Forbered samtale med medarbeider! ${orgnr}`}
-            </PaneltittelMedIkon>
-            <Normaltekst className="samtalestøttepanel__ingress">
-                Samtaler rundt sykefravær kan være vanskelige. Vi har laget et verktøy for
-                arbeidsgivere for å gjøre det lettere å forberede seg.
-            </Normaltekst>
-            <Lenke
-                href={PATH_SAMTALESTØTTE + '?referer=' + window.location.href}
-                className={classNames('intern-lenke')}
-                /*onClick={() => {
-                    sendNavigereEvent({
-                        lenketekst: lenkeTekst,
-                        destinasjon: PATH_SAMTALESTØTTE,
-                        url: window.location.href,
-                    });
-                }}*/
-            >
-                {lenkeTekst}
-            </Lenke>
-        </>
-    );
+    if (visningsmodus === Visningsmodus.SNAKKEBOBLE) {
+        return (<></>);
+    } else {
+        return (
+            <>
+                <PaneltittelMedIkon src={lampeSvg} alt="lampeikon">
+                    {`Forbered samtale med medarbeider!`}
+                </PaneltittelMedIkon>
+                <Normaltekst className="samtalestøttepanel__ingress">
+                    Samtaler rundt sykefravær kan være vanskelige. Vi har laget et verktøy for
+                    arbeidsgivere for å gjøre det lettere å forberede seg.
+                </Normaltekst>
+                <Lenke
+                    href={PATH_SAMTALESTØTTE + '?referer=' + window.location.href}
+                    className={classNames('intern-lenke')}
+                >
+                    {lenkeTekst}
+                </Lenke>
+            </>)
+    }
 };
 
 export default Samtalestøttepanel;

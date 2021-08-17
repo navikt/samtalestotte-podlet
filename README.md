@@ -31,6 +31,39 @@ Oppdater filen `.github/workflows/build-deploy.yml` ved `deploy-to-dev` steg med
 
 ---
 
+# Ta i bruk
+Det er to visningsmodus: `PANEL_MED_IKON_OG_TEKST` og `SNAKKEBOBLE`
+
+Import AsyncNavspa med config
+
+```
+type PodletProps = {
+    visning: string | undefined;
+};
+
+const samtalestottePodletConfig = {
+    appName: 'samtalestotte-podlet',
+    appBaseUrl: '/samtalestotte-podlet',
+    assetManifestParser,
+    loader: <LasterInn />,
+};
+
+export const SamtalestøttePodlet =
+    AsyncNavspa.importer<PodletProps>(samtalestottePodletConfig);
+
+```
+
+Og ta i bruk `SamtalestøttePodlet` med ønsket visningsmodus. 
+
+```
+  <SamtalestøttePodlet
+    visning='PANEL_MED_IKON_OG_TEKST'
+  />
+```
+
+
+---
+
 # Henvendelser
 
 ## For Nav-ansatte
