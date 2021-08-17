@@ -1,11 +1,16 @@
-import React from 'react';
+import React, {FunctionComponent} from 'react';
 import './App.css';
 import Samtalestøttepanel from "./Samtalestøttepanel/Samtalestøttepanel";
 
-function App() {
+type Props ={
+  orgnr: string;
+  ekstraData: string | null;
+  visningsmodell: string | null;
+}
+const App: FunctionComponent<Props>=(props:Props) =>{
   return (
 
-      <Samtalestøttepanel/>
+      <Samtalestøttepanel orgnr={props.orgnr}/>
 
   );
 }

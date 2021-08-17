@@ -9,14 +9,17 @@ import Lenke from 'nav-frontend-lenker';
 //import { useSendNavigereEvent } from '../../amplitude/amplitude';
 import '../InternLenke/InternLenke.less';
 
-const Samtalestøttepanel: FunctionComponent = () => {
+type SamtalestøttePanelProps ={
+    orgnr : string;
+}
+const Samtalestøttepanel: FunctionComponent<SamtalestøttePanelProps> = ({orgnr}) => {
    // const sendNavigereEvent = useSendNavigereEvent();
     const lenkeTekst = 'Gå til samtalestøtten';
 
     return (
         <>
             <PaneltittelMedIkon src={lampeSvg} alt="lampeikon">
-                Forbered samtale med medarbeider!
+                {`Forbered samtale med medarbeider! ${orgnr}`}
             </PaneltittelMedIkon>
             <Normaltekst className="samtalestøttepanel__ingress">
                 Samtaler rundt sykefravær kan være vanskelige. Vi har laget et verktøy for

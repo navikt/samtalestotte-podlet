@@ -4,9 +4,14 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Navspa from '@navikt/navspa';
 
-export const AppContainer: FunctionComponent = () => (
+type AppProps={
+    orgnr: string;
+    ekstraData :string|null;
+    visningsversjon: string|null;
+}
+export const AppContainer: FunctionComponent<AppProps> = ({orgnr, ekstraData, visningsversjon}) => (
     <div id="samtalestotte-podlet" >
-                    <App />
+                    <App orgnr={orgnr} ekstraData={ekstraData} visningsmodell={visningsversjon}/>
     </div>
 );
 Navspa.eksporter('samtalestotte-podlet', AppContainer);
