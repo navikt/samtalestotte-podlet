@@ -1,2 +1,3 @@
-ingresses:
-- "https://arbeidsgiver.labs.nais.io/samtalestotte-podlet"
+ingress: "https://arbeidsgiver.labs.nais.io/samtalestotte-podlet"
+liveness: "https://arbeidsgiver.labs.nais.io/samtalestotte-podlet/internal/isAlive"
+readiness: "https://arbeidsgiver.labs.nais.io/samtalestotte-podlet/internal/isReady"
