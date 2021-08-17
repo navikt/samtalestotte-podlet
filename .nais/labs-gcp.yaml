@@ -20,8 +20,8 @@ spec:
   ingresses:
     - https://arbeidsgiver.labs.nais.io/samtalestotte-podlet
   liveness:
-    path: https://arbeidsgiver.labs.nais.io/samtalestotte-podlet/internal/isAlive
+    path: /samtalestotte-podlet/internal/isAlive
     initialDelay: 10
   readiness:
-    path: https://arbeidsgiver.labs.nais.io/samtalestotte-podlet/internal/isReady
+    path: /samtalestotte-podlet/internal/isReady
     initialDelay: 10
