@@ -6,7 +6,6 @@ metadata:
   labels:
     "team": "arbeidsgiver"
     "created-by": "teamia"
-    "start.nais.io/creationTimestamp": "2021-07-26T12:30:30.069073518"
 spec:
   receivers:
     slack:

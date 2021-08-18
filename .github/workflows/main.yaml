@@ -68,7 +68,7 @@ jobs:
         "VARS": ".nais/dev.yaml"
   "deployAlertsToProd":
     name: "Deploy alerts to prod"
-    if: github.ref == 'refs/heads/master'
+    if: github.ref == 'refs/heads/main'
     needs: "build"
     runs-on: "ubuntu-18.04"
     steps:
