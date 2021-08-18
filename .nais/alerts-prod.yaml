@@ -13,14 +13,10 @@ spec:
       prependText: "<!here> | "
   alerts:
   - alert: "samtalestotte-podlet er nede"
-    description: "App {{ $labels.app }} er nede i namespace {{ $labels.kubernetes_namespace\
-      \ }}"
-    expr: "kube_deployment_status_replicas_available{deployment=\"samtalestotte-podlet\"\
-      } > 0"
+    description: "App {{ $labels.app }} er nede i namespace {{ $labels.kubernetes_namespace }}"
+    expr: "kube_deployment_status_replicas_available{deployment=\"samtalestotte-podlet\"} > 0"
     for: "2m"
-    action: "kubectl describe pod {{ $labels.kubernetes_pod_name }} -n {{ $labels.kubernetes_namespace\
-      \ }}` for events, og `kubectl logs {{ $labels.kubernetes_pod_name }} -n {{ $labels.kubernetes_namespace\
-      \ }}` for logger"
+    action: "kubectl describe pod {{ $labels.kubernetes_pod_name }} -n {{ $labels.kubernetes_namespace }}` for events, og `kubectl logs {{ $labels.kubernetes_pod_name }} -n {{ $labels.kubernetes_namespace }}` for logger"
     documentation: "https://github.com/navikt/arbeidsgiver/somedoc"
     sla: "Responder innen 1 time i kontortid"
     severity: "danger"
