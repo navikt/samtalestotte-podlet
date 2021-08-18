@@ -42,7 +42,7 @@ jobs:
         "RESOURCE": ".nais/labs-gcp.yaml"
   "deployAppToProd":
     name: "Deploy app to prod"
-    if: github.ref == 'refs/heads/master'
+    if: github.ref == 'refs/heads/main'
     needs: "deployAppToDev"
     runs-on: "ubuntu-18.04"
     steps:
@@ -52,8 +52,7 @@ jobs:
       env:
         "APIKEY": "${{ secrets.NAIS_DEPLOY_APIKEY }}"
         "CLUSTER": "prod-gcp"
-        "RESOURCE": ".nais/nais.yaml"
-        "VARS": ".nais/prod.yaml"
+        "RESOURCE": ".nais/prod-gcp.yaml"
   "deployAlertsToDev":
     name: "Deploy alerts to dev"
     needs: "build"
