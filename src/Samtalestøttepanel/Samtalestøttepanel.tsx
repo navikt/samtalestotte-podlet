@@ -6,7 +6,8 @@ import {PaneltittelMedIkon} from '../PaneltittelMedIkon/PaneltittelMedIkon';
 import {PATH_SAMTALESTØTTE} from '../konstanter';
 import classNames from 'classnames';
 import Lenke from 'nav-frontend-lenker';
-import '../InternLenke/InternLenke.less';
+import '../InternLenke/InternLenke.less'; 
+
 import {Visningsmodus} from "../App";
 
 type SamtalestøttePanelProps = {
