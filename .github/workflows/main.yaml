@@ -30,6 +30,7 @@ jobs:
       run: "docker build --pull --tag ${IMAGE} . && docker push ${IMAGE}"
   "deployAppToDev":
     name: "Deploy app to dev"
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/sende-til-dev-sbs'
     needs: "build"
     runs-on: "ubuntu-18.04"
     steps:
@@ -40,6 +41,19 @@ jobs:
         "APIKEY": "${{ secrets.NAIS_DEPLOY_APIKEY }}"
         "CLUSTER": "labs-gcp"
         "RESOURCE": ".nais/labs-gcp.yaml"
+  "deployAppToDev-SBS":
+    name: "Deploy app to dev-sbs"
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/sende-til-dev-sbs'
+    needs: "build"
+    runs-on: "ubuntu-18.04"
+    steps:
+    - uses: "actions/checkout@v2"
+    - name: "Deploy to DEV-sbs"
+      uses: "nais/deploy/actions/deploy@v1"
+      env:
+        "APIKEY": "${{ secrets.NAIS_DEPLOY_APIKEY }}"
+        "CLUSTER": "dev-sbs"
+        "RESOURCE": ".nais/dev-sbs.yaml"
   "deployAppToProd":
     name: "Deploy app to prod"
     if: github.ref == 'refs/heads/main'

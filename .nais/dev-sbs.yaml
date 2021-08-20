@@ -1,0 +1,27 @@
+apiVersion: "nais.io/v1alpha1"
+kind: "Application"
+metadata:
+  name: "samtalestotte-podlet"
+  namespace: "arbeidsgiver"
+  labels:
+    "team": "arbeidsgiver"
+    "created-by": "teamia"
+spec:
+  image: {{image}}
+  team: arbeidsgiver
+  port: 3001
+  replicas:
+    min: 2
+    max: 2
+    cpuThresholdPercentage: 50
+  prometheus:
+    enabled: true
+    path: "/metrics"
+  ingresses:
+    - https://arbeidsgiver-q.nav.no/samtalestotte-podlet
+  liveness:
+    path: /samtalestotte-podlet/internal/isAlive
+    initialDelay: 10
+  readiness:
+    path: /samtalestotte-podlet/internal/isReady
+    initialDelay: 10
