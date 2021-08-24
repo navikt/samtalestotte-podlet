@@ -59,6 +59,9 @@ Og ta i bruk `SamtalestøttePodlet` med ønsket visningsmodus.
   <SamtalestøttePodlet
     visning='PANEL_MED_IKON_OG_TEKST'
   />
+   <SamtalestøttePodlet
+    visning='SNAKKEBOBLE'
+  />
 ```
 
 
