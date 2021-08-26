@@ -18,7 +18,7 @@ spec:
     enabled: true
     path: "/metrics"
   ingresses:
-    - https://arbeidsgiver-q.nav.no/samtalestotte-podlet
+    - https://arbeidsgiver.dev.nav.no/samtalestotte-podlet
   liveness:
     path: /samtalestotte-podlet/internal/isAlive
     initialDelay: 10
