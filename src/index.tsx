@@ -9,8 +9,6 @@ type AppProps = {
 }
 export const AppContainer: FunctionComponent<AppProps> = ({visning}) => {
     const visningsmodus = Visningsmodus[visning as keyof typeof Visningsmodus];
-    console.log("Visning i index.tsx er: ", visning);
-    console.log("Visningsmodus i index.tsx er: ", visningsmodus);
 
     return (
         <div id="samtalestotte-podlet">
