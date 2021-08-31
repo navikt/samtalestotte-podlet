@@ -1,12 +1,12 @@
 import React, {FunctionComponent} from 'react';
 import {Normaltekst} from 'nav-frontend-typografi';
-import lampeSvg from './lampe.svg';
+import {ReactComponent as Lampesvg} from './lampe.svg';
 import './Samtalestøttepanel.less';
 import {PaneltittelMedIkon} from '../PaneltittelMedIkon/PaneltittelMedIkon';
 import {PATH_SAMTALESTØTTE} from '../konstanter';
 import classNames from 'classnames';
 import Lenke from 'nav-frontend-lenker';
-import '../InternLenke/InternLenke.less'; 
+import '../InternLenke/InternLenke.less';
 
 import {Visningsmodus} from "../App";
 
@@ -22,7 +22,7 @@ const Samtalestøttepanel: FunctionComponent<SamtalestøttePanelProps> = ({visni
     } else {
         return (
             <>
-                <PaneltittelMedIkon src={lampeSvg} alt="lampeikon">
+                <PaneltittelMedIkon src={<Lampesvg/>} alt="lampeikon">
                     {`Forbered samtale med medarbeider!`}
                 </PaneltittelMedIkon>
                 <Normaltekst className="samtalestøttepanel__ingress">

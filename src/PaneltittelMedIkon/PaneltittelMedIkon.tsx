@@ -10,7 +10,9 @@ interface Props {
 
 export const PaneltittelMedIkon: FunctionComponent<Props> = (props) => (
     <div className="paneltittel-med-ikon">
-        <img className="paneltittel-med-ikon__ikon" src={props.src} alt={props.alt} />
+        <div className="paneltittel-med-ikon__ikon" aria-label={props.alt}>
+            {props.src}
+        </div>
         <Systemtittel className="paneltittel-med-ikon__tittel" tag="h2">
             {props.children}
         </Systemtittel>

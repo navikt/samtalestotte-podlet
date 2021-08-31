@@ -37,6 +37,7 @@
   },
   "scripts": {
     "start": "PORT=3001 react-scripts start",
+    "serve": "PORT=3001 IS_LOCALHOST=true node server/server.js",
     "start:express": "node ./server/server.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
