@@ -11,7 +11,7 @@ const buildPath = path.join(__dirname, '../build');
 
 const tillateUrler = (cluster) =>{
     switch (cluster){
-        case 'dev-gcp': return ['https://arbeidsgiver-q.nav.no','https://dev-fss.nais.io']
+        case 'dev-gcp': return ['https://arbeidsgiver-q.nav.no','https://tjenester-q1.nav.no']
         case 'prod-gcp': return ['https://tjenester.nav.no']
         default: return []
     }
