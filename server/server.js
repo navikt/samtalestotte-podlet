@@ -19,7 +19,7 @@ const tillateUrler = (cluster) =>{
 
 const corsOptions = {
     origin:
-        process.env.IS_LOCALHOST ? ['http://localhost:3000'] : tillateUrler(process.env.NAIS_CLUSTER_NAME),
+        process.env.IS_LOCALHOST ? ['http://localhost:3000', 'http://localhost:8289'] : tillateUrler(process.env.NAIS_CLUSTER_NAME),
     optionsSuccessStatus: 200
 }
 
