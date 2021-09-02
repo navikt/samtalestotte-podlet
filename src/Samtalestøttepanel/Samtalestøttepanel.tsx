@@ -5,31 +5,27 @@ import { ReactComponent as Femalesvg } from './female.svg';
 
 import './Samtalestøttepanel.less';
 import { PaneltittelMedIkon } from '../PaneltittelMedIkon/PaneltittelMedIkon';
-import { PATH_SAMTALESTØTTE } from '../konstanter';
 import classNames from 'classnames';
 import Lenke from 'nav-frontend-lenker';
 import '../InternLenke/InternLenke.less';
 import { Snakkeboble } from '../Snakkeboble/Snakkeboble';
 
 import { Visningsmodus } from '../App';
+import { getSamtalestøtteUrl, SamtalestøtteProps } from '../utils';
 
-type SamtalestøttePanelProps = {
-    visningsmodus: Visningsmodus;
-};
-
-const Samtalestøttepanel: FunctionComponent<SamtalestøttePanelProps> = ({ visningsmodus }) => {
+const Samtalestøttepanel: FunctionComponent<SamtalestøtteProps> = ({ visning, prodDomener }) => {
     const lenkeTekst = 'Gå til samtalestøtten';
 
     const fellesLenke = (
         <Lenke
-            href={PATH_SAMTALESTØTTE + '?referer=' + window.location.href}
+            href={getSamtalestøtteUrl(prodDomener) + '?referer=' + window.location.href}
             className={classNames('intern-lenke')}
         >
             {lenkeTekst}
         </Lenke>
     );
 
-    if (visningsmodus === Visningsmodus.SNAKKEBOBLE) {
+    if (visning === Visningsmodus.SNAKKEBOBLE) {
         return (
             <>
                 <Snakkeboble src={<Femalesvg />} alt="Female rådgiver">

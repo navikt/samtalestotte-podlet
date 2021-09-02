@@ -1,26 +1,22 @@
-import React, {FunctionComponent} from 'react';
+import React, { FunctionComponent } from 'react';
 import './index.css';
-import App, {Visningsmodus} from './App';
+import App, { Visningsmodus } from './App';
 import reportWebVitals from './reportWebVitals';
 import Navspa from '@navikt/navspa';
+import { AppProps } from './utils';
 
-type AppProps = {
-    visning: string
-}
-export const AppContainer: FunctionComponent<AppProps> = ({visning}) => {
+export const AppContainer: FunctionComponent<AppProps> = ({
+    visning,
+    prodDomener = ['arbeidsgiver.nav.no'],
+}) => {
     const visningsmodus = Visningsmodus[visning as keyof typeof Visningsmodus];
 
     return (
         <div id="samtalestotte-podlet">
-            <App visningsmodus={visningsmodus}/>
+            <App visning={visningsmodus} prodDomener={prodDomener} />
         </div>
     );
-}
+};
 
 Navspa.eksporter('samtalestotte-podlet', AppContainer);
-//ReactDOM.render(<App />, document.getElementById('root'));
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
