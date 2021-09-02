@@ -4,10 +4,11 @@ import App, { Visningsmodus } from './App';
 import reportWebVitals from './reportWebVitals';
 import Navspa from '@navikt/navspa';
 import { AppProps } from './utils';
+import { PROD_DOMENE_ARBEIDSGIVER } from './konstanter';
 
 export const AppContainer: FunctionComponent<AppProps> = ({
     visning,
-    prodDomener = ['arbeidsgiver.nav.no'],
+    prodDomener = [PROD_DOMENE_ARBEIDSGIVER],
 }) => {
     const visningsmodus = Visningsmodus[visning as keyof typeof Visningsmodus];
 
