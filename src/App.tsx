@@ -4,7 +4,7 @@ import Samtalestøttepanel from "./Samtalestøttepanel/Samtalestøttepanel";
 
 export enum Visningsmodus {
     SNAKKEBOBLE = 'SNAKKEBOBLE',
-    PANEL_MED_IKON_OG_TEKST = 'PANEL_MED_IKON_OG_TEKST'
+    PANEL_MED_IKON_OG_TEKST = 'PANEL_MED_IKON_OG_TEKST',
 }
 
 type Props = {

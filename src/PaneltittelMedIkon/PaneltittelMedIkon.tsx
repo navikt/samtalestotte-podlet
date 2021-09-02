@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { Systemtittel } from 'nav-frontend-typografi';
-import "./PaneltittelMedIkon.less";
+import './PaneltittelMedIkon.less';
 
 interface Props {
     children: string;
