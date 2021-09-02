@@ -1,7 +1,8 @@
 import React, { FunctionComponent } from 'react';
 import { Normaltekst } from 'nav-frontend-typografi';
 import { ReactComponent as Lampesvg } from './lampe.svg';
-import female from './female.svg';
+import { ReactComponent as Femalesvg } from './female.svg';
+
 import './Samtalestøttepanel.less';
 import { PaneltittelMedIkon } from '../PaneltittelMedIkon/PaneltittelMedIkon';
 import { PATH_SAMTALESTØTTE } from '../konstanter';
@@ -31,14 +32,12 @@ const Samtalestøttepanel: FunctionComponent<SamtalestøttePanelProps> = ({ visn
     if (visningsmodus === Visningsmodus.SNAKKEBOBLE) {
         return (
             <>
-                <Snakkeboble src={female} alt="Female rådgiver">
-                    {
-                        <Normaltekst>
-                            Samtaler rundt sykefravær kan være vanskelige. Vi har laget et verktøy
-                            for arbeidsgivere for å gjøre det lettere å forberede seg til samtaler
-                            med medarbeidere!
-                        </Normaltekst>
-                    }
+                <Snakkeboble src={<Femalesvg />} alt="Female rådgiver">
+                    <Normaltekst>
+                        Samtaler rundt sykefravær kan være vanskelige. Vi har laget et verktøy for
+                        arbeidsgivere for å gjøre det lettere å forberede seg til samtaler med
+                        medarbeidere!
+                    </Normaltekst>
                 </Snakkeboble>
                 {fellesLenke}
             </>
