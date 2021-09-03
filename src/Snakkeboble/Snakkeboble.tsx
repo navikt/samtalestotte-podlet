@@ -1,14 +1,14 @@
 import React, { FunctionComponent } from 'react';
 import { Systemtittel } from 'nav-frontend-typografi';
-import './PaneltittelMedIkon.less';
+import './Snakkeboble.less';
 
 interface Props {
-    children: string;
+    children: any;
     src: any;
     alt: string;
 }
 
-export const PaneltittelMedIkon: FunctionComponent<Props> = (props) => (
+export const Snakkeboble: FunctionComponent<Props> = (props) => (
     <div className="paneltittel-med-ikon">
         <div className="paneltittel-med-ikon__ikon" aria-label={props.alt}>
             {props.src}

@@ -1,41 +1,56 @@
-import React, {FunctionComponent} from 'react';
-import {Normaltekst} from 'nav-frontend-typografi';
-import lampeSvg from './lampe.svg';
+import React, { FunctionComponent } from 'react';
+import { Normaltekst } from 'nav-frontend-typografi';
+import { ReactComponent as Lampesvg } from './lampe.svg';
+import { ReactComponent as Femalesvg } from './female.svg';
+
 import './Samtalestøttepanel.less';
-import {PaneltittelMedIkon} from '../PaneltittelMedIkon/PaneltittelMedIkon';
-import {PATH_SAMTALESTØTTE} from '../konstanter';
+import { PaneltittelMedIkon } from '../PaneltittelMedIkon/PaneltittelMedIkon';
 import classNames from 'classnames';
 import Lenke from 'nav-frontend-lenker';
-import '../InternLenke/InternLenke.less'; 
+import '../InternLenke/InternLenke.less';
+import { Snakkeboble } from '../Snakkeboble/Snakkeboble';
 
-import {Visningsmodus} from "../App";
+import { Visningsmodus } from '../App';
+import { getSamtalestøtteUrl, SamtalestøtteProps } from '../utils';
 
-type SamtalestøttePanelProps = {
-    visningsmodus: Visningsmodus;
-}
-
-const Samtalestøttepanel: FunctionComponent<SamtalestøttePanelProps> = ({visningsmodus}) => {
+const Samtalestøttepanel: FunctionComponent<SamtalestøtteProps> = ({ visning, prodDomener }) => {
     const lenkeTekst = 'Gå til samtalestøtten';
 
-    if (visningsmodus === Visningsmodus.SNAKKEBOBLE) {
-        return (<></>);
+    const fellesLenke = (
+        <Lenke
+            href={getSamtalestøtteUrl(prodDomener) + '?referer=' + window.location.href}
+            className={classNames('intern-lenke')}
+        >
+            {lenkeTekst}
+        </Lenke>
+    );
+
+    if (visning === Visningsmodus.SNAKKEBOBLE) {
+        return (
+            <>
+                <Snakkeboble src={<Femalesvg />} alt="Female rådgiver">
+                    <Normaltekst>
+                        Samtaler rundt sykefravær kan være vanskelige. Vi har laget et verktøy for
+                        arbeidsgivere for å gjøre det lettere å forberede seg til samtaler med
+                        medarbeidere!
+                    </Normaltekst>
+                </Snakkeboble>
+                {fellesLenke}
+            </>
+        );
     } else {
         return (
             <>
-                <PaneltittelMedIkon src={lampeSvg} alt="lampeikon">
+                <PaneltittelMedIkon src={<Lampesvg />} alt="lampeikon">
                     {`Forbered samtale med medarbeider!`}
                 </PaneltittelMedIkon>
                 <Normaltekst className="samtalestøttepanel__ingress">
                     Samtaler rundt sykefravær kan være vanskelige. Vi har laget et verktøy for
                     arbeidsgivere for å gjøre det lettere å forberede seg.
                 </Normaltekst>
-                <Lenke
-                    href={PATH_SAMTALESTØTTE + '?referer=' + window.location.href}
-                    className={classNames('intern-lenke')}
-                >
-                    {lenkeTekst}
-                </Lenke>
-            </>)
+                {fellesLenke}
+            </>
+        );
     }
 };
 

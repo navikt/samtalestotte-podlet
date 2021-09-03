@@ -27,8 +27,8 @@ jobs:
           yarn run build
     - name: "Build and push the Docker image"
       run: "docker build --pull --tag ${IMAGE} . && docker push ${IMAGE}"
-  "deployAppToDev":
-    name: "Deploy app to dev"
+  "deployAppToLabs":
+    name: "Deploy app to labs"
     if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/sende-til-dev-sbs'
     needs: "build"
     runs-on: "ubuntu-18.04"
@@ -40,23 +40,23 @@ jobs:
         "APIKEY": "${{ secrets.NAIS_DEPLOY_APIKEY }}"
         "CLUSTER": "labs-gcp"
         "RESOURCE": ".nais/labs-gcp.yaml"
-  "deployAppToDev-SBS":
-    name: "Deploy app to dev-sbs"
-    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/sende-til-dev-sbs'
+  "deployAppToDev-Gcp":
+    name: "Deploy app to dev-gcp"
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/deploy-til-dev-gcp'
     needs: "build"
     runs-on: "ubuntu-18.04"
     steps:
     - uses: "actions/checkout@v2"
-    - name: "Deploy to DEV-sbs"
+    - name: "Deploy to DEV-gcp"
       uses: "nais/deploy/actions/deploy@v1"
       env:
         "APIKEY": "${{ secrets.NAIS_DEPLOY_APIKEY }}"
-        "CLUSTER": "dev-sbs"
-        "RESOURCE": ".nais/dev-sbs.yaml"
+        "CLUSTER": "dev-gcp"
+        "RESOURCE": ".nais/dev-gcp.yaml"
   "deployAppToProd":
     name: "Deploy app to prod"
     if: github.ref == 'refs/heads/main'
-    needs: "deployAppToDev"
+    needs: "build"
     runs-on: "ubuntu-18.04"
     steps:
     - uses: "actions/checkout@v2"

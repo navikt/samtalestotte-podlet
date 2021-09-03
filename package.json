@@ -4,7 +4,6 @@
   "private": true,
   "homepage": "/samtalestotte-podlet",
   "dependencies": {
-    "@craco/craco": "^6.0.0",
     "@navikt/navspa": "^3.0.2",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.2.7",
@@ -23,6 +22,7 @@
     "nav-frontend-paneler-style": "^2.0.1",
     "nav-frontend-typografi": "^4.0.1",
     "nav-frontend-typografi-style": "^2.0.1",
+    "prettier": "^2.3.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-router-dom": "^5.2.0",
@@ -38,6 +38,7 @@
   },
   "scripts": {
     "start": "PORT=3001 react-scripts start",
+    "serve": "PORT=3001 IS_LOCALHOST=true node server/server.js",
     "start:express": "node ./server/server.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
