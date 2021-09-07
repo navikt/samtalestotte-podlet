@@ -3,11 +3,9 @@ import { Normaltekst } from 'nav-frontend-typografi';
 import { ReactComponent as Lampesvg } from './lampe.svg';
 import { ReactComponent as Femalesvg } from './female.svg';
 
-import './Samtalestøttepanel.less';
 import { PaneltittelMedIkon } from '../PaneltittelMedIkon/PaneltittelMedIkon';
 import classNames from 'classnames';
 import Lenke from 'nav-frontend-lenker';
-import '../InternLenke/InternLenke.less';
 import { Snakkeboble } from '../Snakkeboble/Snakkeboble';
 
 import { Visningsmodus } from '../App';
