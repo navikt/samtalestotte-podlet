@@ -9,8 +9,6 @@ export enum Visningsmodus {
 }
 
 const App: FunctionComponent<SamtalestøtteProps> = (props: SamtalestøtteProps) => {
-    console.log('Visningsmodus i App er: ', props.visning);
-
     return <Samtalestøttepanel visning={props.visning} prodDomener={props.prodDomener} />;
 };
 
