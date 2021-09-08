@@ -1,19 +1,17 @@
 import React, { FunctionComponent } from 'react';
-import { Systemtittel } from 'nav-frontend-typografi';
+import { ReactComponent as Femalesvg } from './female.svg';
+import { ReactComponent as SnakkebobleTriangle } from './SnakkebobleTriangle.svg';
 
 interface Props {
     children: any;
-    src: any;
-    alt: string;
 }
 
 export const Snakkeboble: FunctionComponent<Props> = (props) => (
     <div className="snakkeboble">
-        <div className="snakkeboble__ikon" aria-label={props.alt}>
-            {props.src}
+        <div className="snakkeboble__ikon-og-pil" aria-label={'Rådgiver'}>
+            <Femalesvg className={'snakkeboble__ikon'} />
+            <SnakkebobleTriangle className={'snakkeboble__pil'} />
         </div>
-        <Systemtittel className="snakkeboble__tittel" tag="h2">
-            {props.children}
-        </Systemtittel>
+        <div className="snakkeboble__tekst-og-lenke">{props.children}</div>
     </div>
 );

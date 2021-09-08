@@ -1,13 +1,11 @@
 import React, { FunctionComponent } from 'react';
 import { Normaltekst } from 'nav-frontend-typografi';
-import { ReactComponent as Lampesvg } from './lampe.svg';
-import { ReactComponent as Femalesvg } from './female.svg';
+import { ReactComponent as Lampesvg } from '../PaneltittelMedIkon/lampe.svg';
 
 import { PaneltittelMedIkon } from '../PaneltittelMedIkon/PaneltittelMedIkon';
 import classNames from 'classnames';
 import Lenke from 'nav-frontend-lenker';
 import { Snakkeboble } from '../Snakkeboble/Snakkeboble';
-
 import { Visningsmodus } from '../App';
 import { getSamtalestøtteUrl, SamtalestøtteProps } from '../utils';
 
@@ -17,7 +15,7 @@ const Samtalestøttepanel: FunctionComponent<SamtalestøtteProps> = ({ visning, 
     const fellesLenke = (
         <Lenke
             href={getSamtalestøtteUrl(prodDomener) + '?referer=' + window.location.href}
-            className={classNames('intern-lenke')}
+            className={classNames('samtalestøttepanel__intern-lenke')}
         >
             {lenkeTekst}
         </Lenke>
@@ -26,14 +24,14 @@ const Samtalestøttepanel: FunctionComponent<SamtalestøtteProps> = ({ visning, 
     if (visning === Visningsmodus.SNAKKEBOBLE) {
         return (
             <>
-                <Snakkeboble src={<Femalesvg />} alt="Female rådgiver">
+                <Snakkeboble>
                     <Normaltekst>
                         Samtaler rundt sykefravær kan være vanskelige. Vi har laget et verktøy for
                         arbeidsgivere for å gjøre det lettere å forberede seg til samtaler med
                         medarbeidere!
                     </Normaltekst>
+                    {fellesLenke}
                 </Snakkeboble>
-                {fellesLenke}
             </>
         );
     } else {
