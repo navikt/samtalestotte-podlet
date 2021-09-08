@@ -8,6 +8,8 @@ import Lenke from 'nav-frontend-lenker';
 import { Snakkeboble } from '../Snakkeboble/Snakkeboble';
 import { Visningsmodus } from '../App';
 import { getSamtalestøtteUrl, SamtalestøtteProps } from '../utils';
+import styles from './samtalestøttepanel.module.css';
+
 
 const Samtalestøttepanel: FunctionComponent<SamtalestøtteProps> = ({ visning, prodDomener }) => {
     const lenkeTekst = 'Gå til samtalestøtten';
@@ -15,7 +17,7 @@ const Samtalestøttepanel: FunctionComponent<SamtalestøtteProps> = ({ visning, 
     const fellesLenke = (
         <Lenke
             href={getSamtalestøtteUrl(prodDomener) + '?referer=' + window.location.href}
-            className={classNames('samtalestøttepanel__intern-lenke')}
+            className={styles.samtalestøttepanel__intern_lenke}
         >
             {lenkeTekst}
         </Lenke>
