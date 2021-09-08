@@ -10,9 +10,6 @@
     padding-bottom: 1rem;
 }
 
-.samtalestøttepanel__intern_lenke {
-    color: red;
-}
 
 @media (min-width: 768px) {
     .samtalestøttepanel {

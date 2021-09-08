@@ -3,38 +3,33 @@ import { Normaltekst } from 'nav-frontend-typografi';
 import { ReactComponent as Lampesvg } from '../PaneltittelMedIkon/lampe.svg';
 
 import { PaneltittelMedIkon } from '../PaneltittelMedIkon/PaneltittelMedIkon';
-import classNames from 'classnames';
 import Lenke from 'nav-frontend-lenker';
 import { Snakkeboble } from '../Snakkeboble/Snakkeboble';
 import { Visningsmodus } from '../App';
 import { getSamtalestøtteUrl, SamtalestøtteProps } from '../utils';
 import styles from './samtalestøttepanel.module.css';
 
-
 const Samtalestøttepanel: FunctionComponent<SamtalestøtteProps> = ({ visning, prodDomener }) => {
     const lenkeTekst = 'Gå til samtalestøtten';
 
     const fellesLenke = (
-        <Lenke
-            href={getSamtalestøtteUrl(prodDomener) + '?referer=' + window.location.href}
-            className={styles.samtalestøttepanel__intern_lenke}
-        >
+        <Lenke href={getSamtalestøtteUrl(prodDomener) + '?referer=' + window.location.href}>
             {lenkeTekst}
         </Lenke>
     );
 
     if (visning === Visningsmodus.SNAKKEBOBLE) {
         return (
-            <>
-                <Snakkeboble>
-                    <Normaltekst>
-                        Samtaler rundt sykefravær kan være vanskelige. Vi har laget et verktøy for
-                        arbeidsgivere for å gjøre det lettere å forberede seg til samtaler med
-                        medarbeidere!
-                    </Normaltekst>
-                    {fellesLenke}
-                </Snakkeboble>
-            </>
+            <Snakkeboble>
+                <Normaltekst className={styles.samtalestøttepanel__ingress}>
+                    Samtaler rundt sykefravær kan være vanskelige. Vi har laget et verktøy for
+                    arbeidsgivere for å gjøre det lettere å forberede seg til samtaler med
+                    medarbeidere!
+                </Normaltekst>
+                <Lenke href={getSamtalestøtteUrl(prodDomener) + '?referer=' + window.location.href}>
+                    {lenkeTekst}
+                </Lenke>
+            </Snakkeboble>
         );
     } else {
         return (
@@ -46,7 +41,13 @@ const Samtalestøttepanel: FunctionComponent<SamtalestøtteProps> = ({ visning, 
                     Samtaler rundt sykefravær kan være vanskelige. Vi har laget et verktøy for
                     arbeidsgivere for å gjøre det lettere å forberede seg.
                 </Normaltekst>
-                {fellesLenke}
+                {/* OBS: className 'intern-lenke' kommer fra parent-app f.eks 'sykefraværsstatistikk' */}
+                <Lenke
+                    href={getSamtalestøtteUrl(prodDomener) + '?referer=' + window.location.href}
+                    className="intern-lenke"
+                >
+                    {lenkeTekst}
+                </Lenke>
             </>
         );
     }
