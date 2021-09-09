@@ -12,11 +12,6 @@ import styles from './samtalestøttepanel.module.css';
 const Samtalestøttepanel: FunctionComponent<SamtalestøtteProps> = ({ visning, prodDomener }) => {
     const lenkeTekst = 'Gå til samtalestøtten';
 
-    const fellesLenke = (
-        <Lenke href={getSamtalestøtteUrl(prodDomener) + '?referer=' + window.location.href}>
-            {lenkeTekst}
-        </Lenke>
-    );
 
     if (visning === Visningsmodus.SNAKKEBOBLE) {
         return (
