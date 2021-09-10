@@ -1,5 +1,4 @@
 .samtalestøttepanel {
-
     border-radius: 0.25rem;
     margin-top: 1.5rem;
     padding: 0;
@@ -10,12 +9,6 @@
     padding-bottom: 1rem;
 }
 
-
-@media (min-width: 768px) {
-    .samtalestøttepanel {
-        padding: 0;
-    }
-}
 
 @media print {
     .samtalestøttepanel__lenke {
