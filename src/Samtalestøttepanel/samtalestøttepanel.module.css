@@ -1,0 +1,19 @@
+.samtalestøttepanel {
+    border-radius: 0.25rem;
+    margin-top: 1.5rem;
+    padding: 0;
+    width: 100%;
+}
+
+.samtalestøttepanel__ingress {
+    padding-bottom: 1rem;
+}
+
+
+@media print {
+    .samtalestøttepanel__lenke {
+        display: none;
+    }
+}
+
+

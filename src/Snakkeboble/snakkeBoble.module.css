@@ -1,0 +1,39 @@
+.snakkeboble {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 1.5rem;
+    align-items: center;
+    width: 100%;
+}
+
+.snakkeboble__ikon_og_pil {
+    display: none;
+}
+
+.snakkeboble__tekst_og_lenke {
+    background-color: #f1f1f1;
+    padding: 1rem 1rem;
+}
+
+@media (min-width: 768px) {
+    .snakkeboble {
+        flex-direction: row;
+        display: flex;
+    }
+
+    .snakkeboble__ikon {
+        margin-bottom: 0;
+        margin-right: 1rem;
+        width: 4.5rem;
+        height: 4.5rem;
+    }
+
+    .snakkeboble__pil {
+        margin-top: 1.5rem;
+    }
+
+    .snakkeboble__ikon_og_pil {
+        display: flex;
+        flex-direction: row;
+    }
+}
