@@ -12,7 +12,6 @@ import styles from './samtalestøttepanel.module.css';
 const Samtalestøttepanel: FunctionComponent<SamtalestøtteProps> = ({ visning, prodDomener }) => {
     const lenkeTekst = 'Gå til samtalestøtten';
 
-
     if (visning === Visningsmodus.SNAKKEBOBLE) {
         return (
             <Snakkeboble>
@@ -32,7 +31,7 @@ const Samtalestøttepanel: FunctionComponent<SamtalestøtteProps> = ({ visning, 
                 <PaneltittelMedIkon src={<Lampesvg />} alt="lampeikon">
                     {`Forbered samtale med medarbeider!`}
                 </PaneltittelMedIkon>
-                <Normaltekst className="samtalestøttepanel__ingress">
+                <Normaltekst className={styles.samtalestøttepanel__ingress}>
                     Samtaler rundt sykefravær kan være vanskelige. Vi har laget et verktøy for
                     arbeidsgivere for å gjøre det lettere å forberede seg.
                 </Normaltekst>
