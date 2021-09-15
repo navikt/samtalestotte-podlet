@@ -8,7 +8,7 @@
     "@navikt/ds-react": "^0.7.7",
     "@navikt/navspa": "^3.0.2",
     "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^12.1.0",
+    "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^13.2.1",
     "@types/classnames": "^2.3.1",
     "@types/jest": "^27.0.1",
@@ -29,7 +29,8 @@
   "resolutions": {
     "react-scripts/**/tar": "^6.1.4",
     "react-scripts/**/browserslist": "^4.14.6",
-    "react-scripts/**/glob-parent": "^6.0.1"
+    "react-scripts/**/glob-parent": "^6.0.1",
+    "react-scripts/**/immer": "^9.0.6"
   },
   "scripts": {
     "start": "PORT=3001 react-scripts start",
