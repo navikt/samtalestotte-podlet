@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import { Systemtittel } from 'nav-frontend-typografi';
+import { Title } from '@navikt/ds-react';
 import styles from './panelltittelMedIkon.module.css';
 
 interface Props {
@@ -13,8 +13,8 @@ export const PaneltittelMedIkon: FunctionComponent<Props> = (props) => (
         <div className={styles.paneltittel_med_ikon__ikon} aria-label={props.alt}>
             {props.src}
         </div>
-        <Systemtittel className={styles.paneltittel_med_ikon__tittel} tag="h2">
+        <Title level={'2'} size={'m'} className={styles.paneltittel_med_ikon__tittel}>
             {props.children}
-        </Systemtittel>
+        </Title>
     </div>
 );
