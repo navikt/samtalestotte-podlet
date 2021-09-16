@@ -16,7 +16,7 @@ const tillateUrler = (cluster) => {
         case 'prod-gcp':
             return ['https://tjenester.nav.no'];
         case 'labs-gcp':
-            return ['https://oppfolgingsplanarbeidsgiver.herokuapp.com/'];
+            return ['https://oppfolgingsplanarbeidsgiver.herokuapp.com'];
         default:
             return [];
     }
