@@ -1,13 +1,9 @@
-@import '../node_modules/nav-frontend-core/less/core.less';
-@import '../node_modules/nav-frontend-typografi-style/src/index';
-@import '../node_modules/nav-frontend-lenker-style/src/lenker-mixins.less';
-
 @mobile-breakpoint: 576px;
-@tablet-breakpoint: @container-tablet;
-@desktop-breakpoint: @container-desktop;
+@tablet-breakpoint: 736px;//TODO hente fra @navikt/react-dss når den blir klar @container-tablet;
+@desktop-breakpoint: 956px; //TODO hente fra @navikt/react-dss når den blir klar @container-desktop;
 @content-max-width: 43.75rem;
 
-@arbeidsgiver-bla: @navBlaLighten80;
+@arbeidsgiver-bla: var(--navds-color-blue-10);
 @button-height: 46px;
 
 .sideinnhold-mixin() {
@@ -19,7 +15,7 @@
 }
 
 .sidewrapper-mixin() {
-  background-color: @navLysGra;
+  background-color: var(--navds-layout-background-gray);
   min-height: 50rem;
   padding: 0 1rem 5rem;
 }
@@ -31,7 +27,7 @@
   padding: 0;
   width: 100%;
 
-  @media (min-width: @screen-sm-min) {
+  @media (min-width: 768px) {
     padding: 2rem;
   }
 }
