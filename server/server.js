@@ -9,19 +9,25 @@ const port = process.env.PORT || 3001;
 const basePath = '/samtalestotte-podlet';
 const buildPath = path.join(__dirname, '../build');
 
-const tillateUrler = (cluster) =>{
-    switch (cluster){
-        case 'dev-gcp': return ['https://arbeidsgiver-q.nav.no','https://tjenester-q1.nav.no']
-        case 'prod-gcp': return ['https://tjenester.nav.no']
-        default: return []
+const tillateUrler = (cluster) => {
+    switch (cluster) {
+        case 'dev-gcp':
+            return ['https://arbeidsgiver-q.nav.no', 'https://tjenester-q1.nav.no'];
+        case 'prod-gcp':
+            return ['https://tjenester.nav.no'];
+        case 'labs-gcp':
+            return ['https://oppfolgingsplanarbeidsgiver.herokuapp.com'];
+        default:
+            return [];
     }
 };
 
 const corsOptions = {
-    origin:
-        process.env.IS_LOCALHOST ? ['http://localhost:3000', 'http://localhost:8289'] : tillateUrler(process.env.NAIS_CLUSTER_NAME),
-    optionsSuccessStatus: 200
-}
+    origin: process.env.IS_LOCALHOST
+        ? ['http://localhost:3000', 'http://localhost:8289']
+        : tillateUrler(process.env.NAIS_CLUSTER_NAME),
+    optionsSuccessStatus: 200,
+};
 
 const startServer = () => {
     app.use(cors(corsOptions));
