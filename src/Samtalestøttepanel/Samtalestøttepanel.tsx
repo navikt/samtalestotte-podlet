@@ -48,12 +48,6 @@ const Samtalestøttepanel: FunctionComponent<SamtalestøtteProps> = ({
                     arbeidsgivere for å gjøre det lettere å forberede seg.
                 </BodyShort>
                 {/* OBS: className 'intern-lenke' kommer fra parent-app f.eks 'sykefraværsstatistikk' */}
-                {/*<Lenke
-                    href={getSamtalestøtteUrl(prodDomener) + '?referer=' + window.location.href}
-                    className="intern-lenke"
-                >
-                    {lenkeTekst}
-                </Lenke>*/}
                 <Link
                     href={
                         getSamtalestøtteUrl(prodDomener) +

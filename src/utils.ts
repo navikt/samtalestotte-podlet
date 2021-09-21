@@ -7,7 +7,7 @@ import {
 export type AppProps = {
     visning: string;
     prodDomener?: string[]; // optional fra parent app -- default er arbeidsgiver.nav.no
-    orgnr: string;
+    orgnr?: string;
 };
 
 export type SamtalestøtteProps = {
