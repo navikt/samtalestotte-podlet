@@ -9,7 +9,13 @@ export enum Visningsmodus {
 }
 
 const App: FunctionComponent<SamtalestøtteProps> = (props: SamtalestøtteProps) => {
-    return <Samtalestøttepanel visning={props.visning} prodDomener={props.prodDomener} />;
+    return (
+        <Samtalestøttepanel
+            visning={props.visning}
+            prodDomener={props.prodDomener}
+            orgnr={props.orgnr}
+        />
+    );
 };
 
 export default App;

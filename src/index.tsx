@@ -9,12 +9,12 @@ import { PROD_DOMENE_ARBEIDSGIVER } from './konstanter';
 export const AppContainer: FunctionComponent<AppProps> = ({
     visning,
     prodDomener = [PROD_DOMENE_ARBEIDSGIVER],
+    orgnr,
 }) => {
     const visningsmodus = Visningsmodus[visning as keyof typeof Visningsmodus];
-
     return (
         <div id="samtalestotte-podlet">
-            <App visning={visningsmodus} prodDomener={prodDomener} />
+            <App visning={visningsmodus} prodDomener={prodDomener} orgnr={orgnr} />
         </div>
     );
 };

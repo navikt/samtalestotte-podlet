@@ -7,11 +7,13 @@ import {
 export type AppProps = {
     visning: string;
     prodDomener?: string[]; // optional fra parent app -- default er arbeidsgiver.nav.no
+    orgnr: string;
 };
 
 export type SamtalestøtteProps = {
     visning: string;
     prodDomener: string[];
+    orgnr: string;
 };
 
 export function erProdMiljø(prodDomener: string[], origin: string) {

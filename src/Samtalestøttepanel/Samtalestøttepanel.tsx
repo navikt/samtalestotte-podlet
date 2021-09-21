@@ -9,7 +9,11 @@ import { Visningsmodus } from '../App';
 import { getSamtalestøtteUrl, SamtalestøtteProps } from '../utils';
 import styles from './samtalestøttepanel.module.css';
 
-const Samtalestøttepanel: FunctionComponent<SamtalestøtteProps> = ({ visning, prodDomener }) => {
+const Samtalestøttepanel: FunctionComponent<SamtalestøtteProps> = ({
+    visning,
+    prodDomener,
+    orgnr,
+}) => {
     const lenkeTekst = 'Gå til samtalestøtten';
 
     if (visning === Visningsmodus.SNAKKEBOBLE) {
@@ -20,7 +24,15 @@ const Samtalestøttepanel: FunctionComponent<SamtalestøtteProps> = ({ visning, 
                     arbeidsgivere for å gjøre det lettere å forberede seg til samtaler med
                     medarbeidere!
                 </BodyShort>
-                <Link href={getSamtalestøtteUrl(prodDomener) + '?referer=' + window.location.href}>
+                <Link
+                    href={
+                        getSamtalestøtteUrl(prodDomener) +
+                        '?referer=' +
+                        window.location.href +
+                        '&orgnr=' +
+                        orgnr
+                    }
+                >
                     {lenkeTekst}
                 </Link>
             </Snakkeboble>
@@ -43,7 +55,13 @@ const Samtalestøttepanel: FunctionComponent<SamtalestøtteProps> = ({ visning, 
                     {lenkeTekst}
                 </Lenke>*/}
                 <Link
-                    href={getSamtalestøtteUrl(prodDomener) + '?referer=' + window.location.href}
+                    href={
+                        getSamtalestøtteUrl(prodDomener) +
+                        '?referer=' +
+                        window.location.href +
+                        '&orgnr=' +
+                        orgnr
+                    }
                     className="intern-lenke"
                 >
                     {lenkeTekst}
