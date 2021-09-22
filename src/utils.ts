@@ -13,7 +13,7 @@ export type AppProps = {
 export type SamtalestøtteProps = {
     visning: string;
     prodDomener: string[];
-    orgnr: string;
+    orgnr?: string;
 };
 
 export function erProdMiljø(prodDomener: string[], origin: string) {
