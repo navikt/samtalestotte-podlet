@@ -29,7 +29,7 @@ jobs:
       run: "docker build --pull --tag ${IMAGE} . && docker push ${IMAGE}"
   "deployAppToLabs":
     name: "Deploy app to labs"
-    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/tillate-cors-for-herokuapp'
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/ta-imot-orgnr'
     needs: "build"
     runs-on: "ubuntu-18.04"
     steps:
