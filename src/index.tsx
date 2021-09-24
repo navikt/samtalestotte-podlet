@@ -14,21 +14,26 @@ export const AppContainer: FunctionComponent<AppProps> = ({
     orgnr,
 }) => {
     const visningsmodus = Visningsmodus[visning as keyof typeof Visningsmodus];
+    /* eslint-disable @typescript-eslint/no-unused-vars */
     const [cookie, setCookie] = useCookies(['samtalestotte-podlet']);
     useEffect(() => {
         setCookie(
             'samtalestotte-podlet',
-            { referer: 'test', orgnr: orgnr, rettigheter: 'narmesteleder' },
+            {
+                referer: window.location.href,
+                orgnr: orgnr,
+                rettigheter: 'HR_sykefravarsstatistikk',
+            },
             {
                 path: '/',
                 maxAge: ETT_ÅR_I_SEKUNDER,
                 sameSite: true,
             }
         );
-    }, []);
+    }, [orgnr]);
     return (
         <div id="samtalestotte-podlet">
-            <App visning={visningsmodus} prodDomener={prodDomener} orgnr={orgnr} />
+            <App visning={visningsmodus} prodDomener={prodDomener} />
         </div>
     );
 };
