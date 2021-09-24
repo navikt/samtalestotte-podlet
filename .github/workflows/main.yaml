@@ -42,7 +42,7 @@ jobs:
         "RESOURCE": ".nais/labs-gcp.yaml"
   "deployAppToDev-Gcp":
     name: "Deploy app to dev-gcp"
-    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/tillate-cors-for-herokuapp'
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/ta-imot-orgnr'
     needs: "build"
     runs-on: "ubuntu-18.04"
     steps:
