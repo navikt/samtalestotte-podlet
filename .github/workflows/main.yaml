@@ -1,95 +1,98 @@
-name: "Build and deploy samtalestotte-podlet"
+name: Build and deploy samtalestotte-podlet
 
 on: [push]
 
 env:
-  "IMAGE": "ghcr.io/${{ github.repository }}:${{ github.sha }}"
+  IMAGE: ghcr.io/${{ github.repository }}:${{ github.sha }}
 jobs:
-  "build":
-    name: "build"
-    runs-on: "ubuntu-18.04"
+  compile-test-and-build:
+    name: Build and run tests
+    runs-on: ubuntu-18.04
     steps:
-    - uses: "actions/checkout@v2"
-    - uses: "actions/setup-node@v1"
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2
+      with:
+          node-version: '14.x'
     - name: Install dependencies
       run: |
           yarn install --frozen-lockfile
-    - name: "run tests"
-      run: "yarn test"
-    - name: "Login to GitHub Docker Registry"
-      uses: "docker/login-action@v1"
+    - name: Run tests
+      run: |
+          yarn test
+    - name: Login to GitHub Docker Registry
+      uses: docker/login-action@v1
       with:
-        "registry": "ghcr.io"
-        "username": "${{ github.actor }}"
-        "password": "${{ secrets.GITHUB_TOKEN }}"
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
     - name: Build application
       run: |
           yarn run build
-    - name: "Build and push the Docker image"
-      run: "docker build --pull --tag ${IMAGE} . && docker push ${IMAGE}"
-  "deployAppToLabs":
-    name: "Deploy app to labs"
+    - name: Build and push the Docker image
+      run: docker build --pull --tag ${IMAGE} . && docker push ${IMAGE}
+  deployAppToLabs:
+    name: Deploy app to labs-gcp
     if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/oppdater-libs-pga-sårbarheter-sept-2021'
-    needs: "build"
-    runs-on: "ubuntu-18.04"
+    needs: compile-test-and-build
+    runs-on: ubuntu-18.04
     steps:
-    - uses: "actions/checkout@v2"
-    - name: "Deploy to DEV-labs"
-      uses: "nais/deploy/actions/deploy@v1"
+    - uses: actions/checkout@v2
+    - name: Deploy to DEV-labs
+      uses: nais/deploy/actions/deploy@v1
       env:
-        "APIKEY": "${{ secrets.NAIS_DEPLOY_APIKEY }}"
-        "CLUSTER": "labs-gcp"
-        "RESOURCE": ".nais/labs-gcp.yaml"
-  "deployAppToDev-Gcp":
-    name: "Deploy app to dev-gcp"
+        APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+        CLUSTER: labs-gcp
+        RESOURCE: .nais/labs-gcp.yaml
+  deployAppToDev-Gcp:
+    name: Deploy app to dev-gcp
     if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/oppdater-libs-pga-sårbarheter-sept-2021'
-    needs: "build"
-    runs-on: "ubuntu-18.04"
+    needs: compile-test-and-build
+    runs-on: ubuntu-18.04
     steps:
-    - uses: "actions/checkout@v2"
-    - name: "Deploy to DEV-gcp"
-      uses: "nais/deploy/actions/deploy@v1"
+    - uses: actions/checkout@v2
+    - name: Deploy to dev-gcp
+      uses: nais/deploy/actions/deploy@v1
       env:
-        "APIKEY": "${{ secrets.NAIS_DEPLOY_APIKEY }}"
-        "CLUSTER": "dev-gcp"
-        "RESOURCE": ".nais/dev-gcp.yaml"
-  "deployAppToProd":
-    name: "Deploy app to prod"
+        APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+        CLUSTER: dev-gcp
+        RESOURCE: .nais/dev-gcp.yaml
+  deployAppToProd:
+    name: Deploy app to prod
     if: github.ref == 'refs/heads/main'
-    needs: "build"
-    runs-on: "ubuntu-18.04"
+    needs: compile-test-and-build
+    runs-on: ubuntu-18.04
     steps:
-    - uses: "actions/checkout@v2"
-    - name: "Deploy to PROD"
-      uses: "nais/deploy/actions/deploy@v1"
+    - uses: actions/checkout@v2
+    - name: Deploy to PROD
+      uses: nais/deploy/actions/deploy@v1
       env:
-        "APIKEY": "${{ secrets.NAIS_DEPLOY_APIKEY }}"
-        "CLUSTER": "prod-gcp"
-        "RESOURCE": ".nais/prod-gcp.yaml"
-  "deployAlertsToDev":
-    name: "Deploy alerts to dev"
-    needs: "build"
-    runs-on: "ubuntu-18.04"
+        APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+        CLUSTER: prod-gcp
+        RESOURCE: .nais/prod-gcp.yaml
+  deployAlertsToDev:
+    name: Deploy alerts to dev-gcp
+    needs: compile-test-and-build
+    runs-on: ubuntu-18.04
     steps:
-    - uses: "actions/checkout@v2"
-    - name: "Deploy alerts to DEV"
-      uses: "nais/deploy/actions/deploy@v1"
+    - uses: actions/checkout@v2
+    - name: Deploy alerts to dev-gcp
+      uses: nais/deploy/actions/deploy@v1
       env:
-        "APIKEY": "${{ secrets.NAIS_DEPLOY_APIKEY }}"
-        "CLUSTER": "labs-gcp"
-        "RESOURCE": ".nais/alerts-dev.yaml"
-        "VARS": ".nais/dev.yaml"
-  "deployAlertsToProd":
-    name: "Deploy alerts to prod"
+        APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+        CLUSTER: labs-gcp
+        RESOURCE: .nais/alerts-dev.yaml
+        VARS: .nais/dev.yaml
+  deployAlertsToProd:
+    name: Deploy alerts to prod
     if: github.ref == 'refs/heads/main'
-    needs: "build"
-    runs-on: "ubuntu-18.04"
+    needs: compile-test-and-build
+    runs-on: ubuntu-18.04
     steps:
-    - uses: "actions/checkout@v2"
-    - name: "Deploy alerts to PROD"
-      uses: "nais/deploy/actions/deploy@v1"
+    - uses: actions/checkout@v2
+    - name: Deploy alerts to PROD
+      uses: nais/deploy/actions/deploy@v1
       env:
-        "APIKEY": "${{ secrets.NAIS_DEPLOY_APIKEY }}"
-        "CLUSTER": "prod-sbs"
-        "RESOURCE": ".nais/alerts-prod.yaml"
-        "VARS": ".nais/prod.yaml"
+        APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+        CLUSTER: prod-gcp
+        RESOURCE: .nais/alerts-prod.yaml
+        VARS: .nais/prod.yaml
