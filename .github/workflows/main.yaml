@@ -29,7 +29,7 @@ jobs:
       run: "docker build --pull --tag ${IMAGE} . && docker push ${IMAGE}"
   "deployAppToLabs":
     name: "Deploy app to labs"
-    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/tillate-cors-for-herokuapp'
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/oppdater-libs-pga-sårbarheter-sept-2021'
     needs: "build"
     runs-on: "ubuntu-18.04"
     steps:
@@ -42,7 +42,7 @@ jobs:
         "RESOURCE": ".nais/labs-gcp.yaml"
   "deployAppToDev-Gcp":
     name: "Deploy app to dev-gcp"
-    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/tillate-cors-for-herokuapp'
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/oppdater-libs-pga-sårbarheter-sept-2021'
     needs: "build"
     runs-on: "ubuntu-18.04"
     steps:
