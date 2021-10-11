@@ -6,6 +6,7 @@ import Navspa from '@navikt/navspa';
 import { AppProps } from './utils';
 import { PROD_DOMENE_ARBEIDSGIVER } from './konstanter';
 import { useCookies } from 'react-cookie';
+
 const ETT_ÅR_I_SEKUNDER = 31536000;
 
 export const AppContainer: FunctionComponent<AppProps> = ({
@@ -14,6 +15,9 @@ export const AppContainer: FunctionComponent<AppProps> = ({
     orgnr,
 }) => {
     const visningsmodus = Visningsmodus[visning as keyof typeof Visningsmodus];
+    const rettigheter = window.location.href.includes('oppfolgingsplanarbeidsgiver')
+        ? 'oppfolgingsplan-service-i-altinn'
+        : 'ia-service-i-altinn';
     /* eslint-disable @typescript-eslint/no-unused-vars */
     const [cookie, setCookie] = useCookies(['samtalestotte-podlet']);
     useEffect(() => {
@@ -22,7 +26,7 @@ export const AppContainer: FunctionComponent<AppProps> = ({
             {
                 referer: window.location.href,
                 orgnr: orgnr,
-                rettigheter: 'HR_sykefravarsstatistikk',
+                rettigheter: rettigheter,
             },
             {
                 path: '/',
