@@ -34,7 +34,7 @@ export const AppContainer: FunctionComponent<AppProps> = ({
                 sameSite: true,
             }
         );
-    }, [orgnr, setCookie]);
+    }, [orgnr, rettigheter, setCookie]);
     return (
         <div id="samtalestotte-podlet">
             <App visning={visningsmodus} prodDomener={prodDomener} />
