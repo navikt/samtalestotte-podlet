@@ -9,11 +9,7 @@ import { Visningsmodus } from '../App';
 import { getSamtalestøtteUrl, SamtalestøtteProps } from '../utils';
 import styles from './samtalestøttepanel.module.css';
 
-const Samtalestøttepanel: FunctionComponent<SamtalestøtteProps> = ({
-    visning,
-    prodDomener,
-    orgnr,
-}) => {
+const Samtalestøttepanel: FunctionComponent<SamtalestøtteProps> = ({ visning, prodDomener }) => {
     const lenkeTekst = 'Gå til samtalestøtten';
 
     if (visning === Visningsmodus.SNAKKEBOBLE) {
@@ -24,17 +20,7 @@ const Samtalestøttepanel: FunctionComponent<SamtalestøtteProps> = ({
                     arbeidsgivere for å gjøre det lettere å forberede seg til samtaler med
                     medarbeidere!
                 </BodyShort>
-                <Link
-                    href={
-                        getSamtalestøtteUrl(prodDomener) +
-                        '?referer=' +
-                        window.location.href +
-                        '&orgnr=' +
-                        orgnr
-                    }
-                >
-                    {lenkeTekst}
-                </Link>
+                <Link href={getSamtalestøtteUrl(prodDomener)}>{lenkeTekst}</Link>
             </Snakkeboble>
         );
     } else {
@@ -48,16 +34,7 @@ const Samtalestøttepanel: FunctionComponent<SamtalestøtteProps> = ({
                     arbeidsgivere for å gjøre det lettere å forberede seg.
                 </BodyShort>
                 {/* OBS: className 'intern-lenke' kommer fra parent-app f.eks 'sykefraværsstatistikk' */}
-                <Link
-                    href={
-                        getSamtalestøtteUrl(prodDomener) +
-                        '?referer=' +
-                        window.location.href +
-                        '&orgnr=' +
-                        orgnr
-                    }
-                    className="intern-lenke"
-                >
+                <Link href={getSamtalestøtteUrl(prodDomener)} className="intern-lenke">
                     {lenkeTekst}
                 </Link>
             </>
