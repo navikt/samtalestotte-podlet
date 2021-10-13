@@ -15,9 +15,9 @@ export const AppContainer: FunctionComponent<AppProps> = ({
     orgnr,
 }) => {
     const visningsmodus = Visningsmodus[visning as keyof typeof Visningsmodus];
-    const rettigheter = window.location.href.includes('oppfolgingsplanarbeidsgiver')
-        ? 'oppfolgingsplan-service-i-altinn'
-        : 'ia-service-i-altinn';
+    const altinnRettighet = window.location.href.includes('oppfolgingsplanarbeidsgiver')
+        ? 'ARBEIDSGIVERS_OPPFØLGINGSPLAN_FOR_SYKMELDTE'
+        : 'SYKEFRAVÆRSSTATISTIKK_FOR_VIRKSOMHETER';
     /* eslint-disable @typescript-eslint/no-unused-vars */
     const [cookie, setCookie] = useCookies(['samtalestotte-podlet']);
     useEffect(() => {
@@ -26,7 +26,7 @@ export const AppContainer: FunctionComponent<AppProps> = ({
             {
                 referer: window.location.href,
                 orgnr: orgnr,
-                rettigheter: rettigheter,
+                altinnRettighet: altinnRettighet,
             },
             {
                 path: '/',
@@ -34,7 +34,7 @@ export const AppContainer: FunctionComponent<AppProps> = ({
                 sameSite: true,
             }
         );
-    }, [orgnr, rettigheter, setCookie]);
+    }, [orgnr, altinnRettighet, setCookie]);
     return (
         <div id="samtalestotte-podlet">
             <App visning={visningsmodus} prodDomener={prodDomener} />
