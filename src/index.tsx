@@ -15,12 +15,13 @@ export const AppContainer: FunctionComponent<AppProps> = ({
     orgnr,
 }) => {
     const visningsmodus = Visningsmodus[visning as keyof typeof Visningsmodus];
-    const altinnRettighet = window.location.href.includes('oppfolgingsplanarbeidsgiver')
-        ? 'ARBEIDSGIVERS_OPPFØLGINGSPLAN_FOR_SYKMELDTE'
-        : 'SYKEFRAVÆRSSTATISTIKK_FOR_VIRKSOMHETER';
-    /* eslint-disable @typescript-eslint/no-unused-vars */
-    const [cookie, setCookie] = useCookies(['samtalestotte-podlet']);
+
+    const [, setCookie] = useCookies(['samtalestotte-podlet']);
+
     useEffect(() => {
+        const altinnRettighet = window.location.href.includes('oppfolgingsplanarbeidsgiver')
+            ? 'ARBEIDSGIVERS_OPPFØLGINGSPLAN_FOR_SYKMELDTE'
+            : 'SYKEFRAVÆRSSTATISTIKK_FOR_VIRKSOMHETER';
         setCookie(
             'samtalestotte-podlet',
             {
@@ -34,7 +35,8 @@ export const AppContainer: FunctionComponent<AppProps> = ({
                 sameSite: true,
             }
         );
-    }, [orgnr, altinnRettighet, setCookie]);
+    }, [orgnr, setCookie]);
+
     return (
         <div id="samtalestotte-podlet">
             <App visning={visningsmodus} prodDomener={prodDomener} />
