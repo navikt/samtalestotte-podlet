@@ -7,7 +7,7 @@ import { AppProps } from './utils';
 import { PROD_DOMENE_ARBEIDSGIVER } from './konstanter';
 import { useCookies } from 'react-cookie';
 
-const ETT_ÅR_I_SEKUNDER = 31536000;
+const ETT_DØGN_I_SEKUNDER = 86400;
 
 export const AppContainer: FunctionComponent<AppProps> = ({
     visning,
@@ -31,7 +31,7 @@ export const AppContainer: FunctionComponent<AppProps> = ({
             },
             {
                 path: '/',
-                maxAge: ETT_ÅR_I_SEKUNDER,
+                maxAge: ETT_DØGN_I_SEKUNDER,
                 sameSite: true,
             }
         );
