@@ -24,7 +24,7 @@ export const AppContainer: FunctionComponent<AppProps> = ({
         setCookie(
             'samtalestotte-podlet',
             {
-                referer: window.location.href,
+                referrer: window.location.href,
                 orgnr: orgnr,
                 altinnRettighet: altinnRettighet,
             },
