@@ -33,6 +33,7 @@ export const AppContainer: FunctionComponent<AppProps> = ({
                 path: '/',
                 maxAge: ETT_DØGN_I_SEKUNDER,
                 sameSite: true,
+                domain: 'nav.no',
             }
         );
     }, [orgnr, setCookie]);
