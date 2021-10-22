@@ -1,5 +1,5 @@
 import {
-    LABS_DOMENE_ARBEIDSGIVER,
+    DEV_GCP_DOMENE_ARBEIDSGIVER,
     PATH_SAMTALESTØTTE,
     PROD_DOMENE_ARBEIDSGIVER,
 } from './konstanter';
@@ -31,6 +31,6 @@ export const getSamtalestøtteUrl = (domener: string[]): string => {
     if (erProdMiljø(domener, origin)) {
         return `https://${PROD_DOMENE_ARBEIDSGIVER}${PATH_SAMTALESTØTTE}`;
     } else {
-        return `https://${LABS_DOMENE_ARBEIDSGIVER}${PATH_SAMTALESTØTTE}`;
+        return `https://${DEV_GCP_DOMENE_ARBEIDSGIVER}${PATH_SAMTALESTØTTE}`;
     }
 };
