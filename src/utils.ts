@@ -20,6 +20,22 @@ export const erLocalhost = (href: string) => {
     return href.startsWith('http://localhost');
 };
 
+export const erLabsMiljø = (href: string) => {
+    return href.startsWith('https://arbeidsgiver.labs.nais.io/');
+};
+
+export const getDomene = (href: string): string => {
+    if (erLocalhost(href)) {
+        return 'localhost';
+    }
+
+    if (erLabsMiljø(href)) {
+        return 'arbeidsgiver.labs.nais.io'
+    }
+
+    return 'nav.no';
+};
+
 export function erProdMiljø(prodDomener: string[], origin: string) {
     var kjørerIProd: boolean = false;
     prodDomener.forEach((domene) => {
@@ -33,6 +49,7 @@ export function erProdMiljø(prodDomener: string[], origin: string) {
 const velgPreprodDomene = (origin: string): string => {
     return origin.includes('-q.nav.no') ? DEV_GCP_DOMENE_ARBEIDSGIVER : LABS_DOMENE_ARBEIDSGIVER;
 };
+
 export const getSamtalestøtteUrl = (domener: string[], href: string): string => {
     const origin = window.location.origin;
 
