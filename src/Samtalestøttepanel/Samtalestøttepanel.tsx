@@ -20,7 +20,7 @@ const Samtalestøttepanel: FunctionComponent<SamtalestøtteProps> = ({ visning, 
                     arbeidsgivere for å gjøre det lettere å forberede seg til samtaler med
                     medarbeidere!
                 </BodyShort>
-                <Link href={getSamtalestøtteUrl(prodDomener)}>{lenkeTekst}</Link>
+                <Link href={getSamtalestøtteUrl(prodDomener, window.location.href)}>{lenkeTekst}</Link>
             </Snakkeboble>
         );
     } else {
@@ -34,7 +34,7 @@ const Samtalestøttepanel: FunctionComponent<SamtalestøtteProps> = ({ visning, 
                     arbeidsgivere for å gjøre det lettere å forberede seg.
                 </BodyShort>
                 {/* OBS: className 'intern-lenke' kommer fra parent-app f.eks 'sykefraværsstatistikk' */}
-                <Link href={getSamtalestøtteUrl(prodDomener)} className="intern-lenke">
+                <Link href={getSamtalestøtteUrl(prodDomener, window.location.href)} className="intern-lenke">
                     {lenkeTekst}
                 </Link>
             </>
