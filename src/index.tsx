@@ -3,7 +3,7 @@ import './index.css';
 import App, { Visningsmodus } from './App';
 import reportWebVitals from './reportWebVitals';
 import Navspa from '@navikt/navspa';
-import {AppProps, erLocalhost, getDomene} from './utils';
+import { AppProps, getDomene } from './utils';
 import { PROD_DOMENE_ARBEIDSGIVER } from './konstanter';
 import { useCookies } from 'react-cookie';
 
