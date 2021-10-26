@@ -3,7 +3,7 @@ import './index.css';
 import App, { Visningsmodus } from './App';
 import reportWebVitals from './reportWebVitals';
 import Navspa from '@navikt/navspa';
-import { AppProps } from './utils';
+import { AppProps, getDomene } from './utils';
 import { PROD_DOMENE_ARBEIDSGIVER } from './konstanter';
 import { useCookies } from 'react-cookie';
 
@@ -32,7 +32,7 @@ export const AppContainer: FunctionComponent<AppProps> = ({
             {
                 path: '/',
                 maxAge: ETT_DØGN_I_SEKUNDER,
-                domain: 'nav.no',
+                domain: getDomene(window.location.href),
             }
         );
     }, [orgnr, setCookie]);
