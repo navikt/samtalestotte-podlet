@@ -45,7 +45,7 @@ jobs:
         RESOURCE: .nais/labs-gcp.yaml
   deployAppToDev-Gcp:
     name: Deploy app to dev-gcp
-    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/mulighet-til-aa-teste-applikasjonen-lokalt'
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/nye-klient-urler-i-gcp-env'
     needs: compile-test-and-build
     runs-on: ubuntu-18.04
     steps:
