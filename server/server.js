@@ -15,7 +15,7 @@ const tillateUrler = (cluster) => {
             return [
                 'https://arbeidsgiver-q.nav.no',
                 'https://tjenester-q1.nav.no',
-                'https://www-gcp.dev.nav.no/oppfolgingsplanarbeidsgiver',
+                'https://www-gcp.dev.nav.no',
             ];
         case 'prod-gcp':
             return ['https://tjenester.nav.no'];
