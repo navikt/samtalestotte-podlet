@@ -30,7 +30,7 @@ export const getDomene = (href: string): string => {
     }
 
     if (erLabsMiljø(href)) {
-        return 'arbeidsgiver.labs.nais.io'
+        return 'arbeidsgiver.labs.nais.io';
     }
 
     return 'nav.no';
@@ -47,7 +47,9 @@ export function erProdMiljø(prodDomener: string[], origin: string) {
 }
 
 const velgPreprodDomene = (origin: string): string => {
-    return origin.includes('-q.nav.no') ? DEV_GCP_DOMENE_ARBEIDSGIVER : LABS_DOMENE_ARBEIDSGIVER;
+    return origin.includes('-q.nav.no') || origin.includes('-gcp.dev.nav.no')
+        ? DEV_GCP_DOMENE_ARBEIDSGIVER
+        : LABS_DOMENE_ARBEIDSGIVER;
 };
 
 export const getSamtalestøtteUrl = (domener: string[], href: string): string => {
