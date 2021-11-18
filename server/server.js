@@ -12,9 +12,17 @@ const buildPath = path.join(__dirname, '../build');
 const tillateUrler = (cluster) => {
     switch (cluster) {
         case 'dev-gcp':
-            return ['https://arbeidsgiver-q.nav.no', 'https://tjenester-q1.nav.no'];
+            return [
+                'https://arbeidsgiver-q.nav.no',
+                'https://tjenester-q1.nav.no',
+                'https://www-gcp.dev.nav.no',
+            ];
         case 'prod-gcp':
-            return ['https://tjenester.nav.no'];
+            return [
+                'https://tjenester.nav.no',
+                'https://www.nav.no',
+                'https://nav.no',
+            ];
         case 'labs-gcp':
             return ['https://oppfolgingsplanarbeidsgiver.herokuapp.com'];
         default:
