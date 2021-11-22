@@ -15,14 +15,13 @@ describe('getPreprodDomene() returnerer labs eller dev-gcp domene avhengig av or
 
 describe('erProdMiljø() sjekker om applikasjonen kjører i produksjon', () => {
     it('Finner ut om applikasjonen kjører i et prod miljø', () => {
-        expect(erProdMiljø(['arbeidsgiver.nav.no', 'tjenester.nav.no'], 'tjenester.nav.no')).toBe(
-            true
-        );
+        expect(erProdMiljø(['arbeidsgiver.nav.no'], 'https://arbeidsgiver.nav.no')).toBe(true);
     });
 
     it('www.nav.no er et prod miljø', () => {
         expect(
             erProdMiljø(
+                // disse to er props oppfølgingsplanarbeidsgiver sender til podlet
                 ['www.nav.no', 'oppfolgingsplanarbeidsgiver.nais.oera.no'],
                 'https://www.nav.no'
             )
@@ -30,13 +29,16 @@ describe('erProdMiljø() sjekker om applikasjonen kjører i produksjon', () => {
     });
 
     it('Q er ikke et prod miljø', () => {
-        expect(erProdMiljø(['arbeidsgiver.nav.no', 'tjenester.nav.no'], 'tjenester-q.nav.no')).toBe(
-            false
-        );
+        expect(
+            erProdMiljø(
+                ['www.nav.no', 'oppfolgingsplanarbeidsgiver.nais.oera.no'],
+                'https://www-gcp.dev.nav.no'
+            )
+        ).toBe(false);
     });
 
     it('Localhost er ikke et prod miljø', () => {
-        expect(erProdMiljø(['arbeidsgiver.nav.no', 'tjenester.nav.no'], 'localhost:3000')).toBe(
+        expect(erProdMiljø(['arbeidsgiver.nav.no'], 'localhost:3000')).toBe(
             false
         );
     });
