@@ -48,7 +48,7 @@ export function erProdMiljø(prodDomener: string[], origin: string) {
 
 export const getPreprodDomene = (origin: string): string => {
     let erDevGcp : boolean = false;
-    ['-q.nav.no', 'www-gcp.dev.nav.no'].forEach( domene => {
+    ['arbeidsgiver-q.nav.no/', 'www-gcp.dev.nav.no'].forEach( domene => {
         if (origin.includes(domene)) {
             erDevGcp = true;
         }
