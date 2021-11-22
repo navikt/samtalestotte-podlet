@@ -46,8 +46,14 @@ export function erProdMiljø(prodDomener: string[], origin: string) {
     return kjørerIProd;
 }
 
-const velgPreprodDomene = (origin: string): string => {
-    return origin.includes('-q.nav.no') ? DEV_GCP_DOMENE_ARBEIDSGIVER : LABS_DOMENE_ARBEIDSGIVER;
+export const getPreprodDomene = (origin: string): string => {
+    let erDevGcp : boolean = false;
+    ['-q.nav.no', 'www-gcp.dev.nav.no'].forEach( domene => {
+        if (origin.includes(domene)) {
+            erDevGcp = true;
+        }
+    })
+    return erDevGcp ? DEV_GCP_DOMENE_ARBEIDSGIVER : LABS_DOMENE_ARBEIDSGIVER;
 };
 
 export const getSamtalestøtteUrl = (domener: string[], href: string): string => {
@@ -60,6 +66,6 @@ export const getSamtalestøtteUrl = (domener: string[], href: string): string =>
     if (erProdMiljø(domener, origin)) {
         return `https://${PROD_DOMENE_ARBEIDSGIVER}${PATH_SAMTALESTØTTE}`;
     } else {
-        return `https://${velgPreprodDomene(origin)}${PATH_SAMTALESTØTTE}`;
+        return `https://${getPreprodDomene(origin)}${PATH_SAMTALESTØTTE}`;
     }
 };
