@@ -9,6 +9,14 @@ describe('sthg', () => {
         ).toBe(true);
     });
 
+    it('www.nav.no er et prod miljø', () => {
+        expect(
+            erProdMiljø(
+                ['www.nav.no', 'oppfolgingsplanarbeidsgiver.nais.oera.no'], 'https://www.nav.no'
+            )
+        ).toBe(true);
+    });
+
     it('Q er ikke et prod miljø', () => {
         expect(
             erProdMiljø(
