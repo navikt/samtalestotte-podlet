@@ -1,14 +1,10 @@
-# WIP microfrontend for Samtalestøtte podlet
-
-#WIP App og utkast README
+# Microfrontend for Samtalestøtte podlet
 
 # Komme i gang
 
 - Installere avhengigheter: `yarn`
-- Starte appen lokalt: Her har man flere muligheter, avhengig av hva man vil.
-    1. Kjøre opp utviklingserver `yarn start`
-    2. Kjøre dev med `yarn run dev`
-- Eventuelt starte appen med Node-serveren: `yarn run build && yarn server`
+- Starte appen lokalt:  `yarn start`. Applikasjon vil starte men skal ikke kunne brukes fra andre applikasjoner (som f.eks `sykefraværsstatistikk`) pga CORS restriksjoner. 
+- Eventuelt starte appen med Node-serveren: `yarn run build && yarn serve`. Server tillater requests fra localhost:3000 (hvor `sykefraværsstatistikk` kjører f.eks)
 - Kjøre applikasjonen med Docker:
     1. `yarn install && yarn build`
     2. `docker build -t samtalestotte-podlet .`
@@ -17,7 +13,7 @@
 
 ## Deploy
 
-Main branch deployes automatisk til Prod(under arbeid).
+Main branch deployes automatisk til Prod
 
 ### Hvordan deployer man en vis branch?
 
@@ -26,25 +22,35 @@ Oppdater filen `.github/workflows/build-deploy.yml` ved `deploy-to-dev` steg med
 
 ### Lenker til applikasjon
 
-- i prod(under arbeid): https://arbeidsgiver.nav.no/samtalestotte-arbeidsgiver
-- i dev miljø: https://arbeidsgiver-gcp.dev.nav.no/samtalestotte-arbeidsgiver --trenger #naisdevice kjørende se https://doc.nais.io/device/install/ for info om det
+- i prod: https://arbeidsgiver.nav.no/samtalestotte-podlet
+- i dev miljø: https://arbeidsgiver-gcp.dev.nav.no/samtalestotte-podlet --trenger #naisdevice kjørende se https://doc.nais.io/device/install/ for info om det
 
 ---
 
 # Ta i bruk
 Det er to visningsmodus: `PANEL_MED_IKON_OG_TEKST` og `SNAKKEBOBLE`
 
+_Greit å vite_ : dersom `orgnr` finnes i props blir informasjon lagret i en `samtalestotte-podlet` cookie sammen med `referrer` og `altinnRettighet`. 
+Cookie blir brukt etterpå i `samtalestøtte-arbeidsgiver` for å produsere metrikker: 
+```
+{
+  "referrer":"http://yo.ur/current/location",
+  "orgnr":"999999999",
+  "altinnRettighet":"avhengig_av_kontekst"
+}
+```
+
 Import AsyncNavspa med config
 
 ```
 type PodletProps = {
     visning: string | undefined;
+    orgnr?: string;
 };
 
 const samtalestottePodletConfig = {
     appName: 'samtalestotte-podlet',
     appBaseUrl: '/samtalestotte-podlet',
-    assetManifestParser,
     loader: <LasterInn />,
 };
 
