@@ -22,7 +22,7 @@ const tillateUrler = (cluster) => {
                 'https://nav.no',
             ];
         case 'labs-gcp':
-            return ['https://oppfolgingsplanarbeidsgiver.labs.nais.io/syk/oppfolgingsplanarbeidsgiver'];
+            return ['https://oppfolgingsplanarbeidsgiver.labs.nais.io'];
         default:
             return [];
     }
