@@ -4,16 +4,19 @@
 Installere avhengigheter: `yarn`
 
 **Starte appen lokalt:** 
+
 `yarn start`. Applikasjon vil starte men skal ikke kunne brukes fra andre applikasjoner (som f.eks `sykefraværsstatistikk`) pga CORS restriksjoner. 
 
-**Starte appen med Node-servere:n** 
+**Starte appen med Node-serveren:**
+
 `yarn run build && yarn serve`. Server tillater requests fra localhost:3000 (hvor `sykefraværsstatistikk` kjører f.eks)
 
 **Kjøre applikasjonen med Docker:**
-    1. `yarn install && yarn build`
-    2. `docker build -t samtalestotte-podlet .`
-    3. `docker run -d -p 3001:3001 samtalestotte-podlet`
-    4. For å stoppe, kjør `docker stop <id>` med id-en fra forrige kommando
+
+1. `yarn install && yarn build`
+2. `docker build -t samtalestotte-podlet .`
+3. `docker run -d -p 3001:3001 samtalestotte-podlet`
+4. For å stoppe, kjør `docker stop <id>` med id-en fra forrige kommando
 
 ## Deploy
 *main*-branch deployes automatisk til produksjon
