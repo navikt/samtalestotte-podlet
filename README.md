@@ -1,33 +1,32 @@
 # Microfrontend for Samtalestøtte podlet
 
-# Komme i gang
+## Komme i gang
+Installere avhengigheter: `yarn`
 
-- Installere avhengigheter: `yarn`
-- Starte appen lokalt:  `yarn start`. Applikasjon vil starte men skal ikke kunne brukes fra andre applikasjoner (som f.eks `sykefraværsstatistikk`) pga CORS restriksjoner. 
-- Eventuelt starte appen med Node-serveren: `yarn run build && yarn serve`. Server tillater requests fra localhost:3000 (hvor `sykefraværsstatistikk` kjører f.eks)
-- Kjøre applikasjonen med Docker:
+**Starte appen lokalt:** 
+`yarn start`. Applikasjon vil starte men skal ikke kunne brukes fra andre applikasjoner (som f.eks `sykefraværsstatistikk`) pga CORS restriksjoner. 
+
+**Starte appen med Node-servere:n** 
+`yarn run build && yarn serve`. Server tillater requests fra localhost:3000 (hvor `sykefraværsstatistikk` kjører f.eks)
+
+**Kjøre applikasjonen med Docker:**
     1. `yarn install && yarn build`
     2. `docker build -t samtalestotte-podlet .`
     3. `docker run -d -p 3001:3001 samtalestotte-podlet`
     4. For å stoppe, kjør `docker stop <id>` med id-en fra forrige kommando
 
 ## Deploy
+*main*-branch deployes automatisk til produksjon
 
-Main branch deployes automatisk til Prod
+For deploy til dev eller labs, oppdater filen `.github/workflows/build-deploy.yml` ved `deploy-to-dev` med navn til branchen som skal deployes.
 
-### Hvordan deployer man en vis branch?
-
-Oppdater filen `.github/workflows/build-deploy.yml` ved `deploy-to-dev` steg med navn til den branch-en som skal deployes
-
-
-### Lenker til applikasjon
-
+## Lenker til applikasjon
 - i prod: https://arbeidsgiver.nav.no/samtalestotte-podlet
 - i dev miljø: https://arbeidsgiver-gcp.dev.nav.no/samtalestotte-podlet --trenger #naisdevice kjørende se https://doc.nais.io/device/install/ for info om det
 
 ---
 
-# Ta i bruk
+## Ta i bruk
 Det er to visningsmodus: `PANEL_MED_IKON_OG_TEKST` og `SNAKKEBOBLE`
 
 _Greit å vite_ : dersom `orgnr` finnes i props blir informasjon lagret i en `samtalestotte-podlet` cookie sammen med `referrer` og `altinnRettighet`. 
@@ -73,16 +72,16 @@ Og ta i bruk `SamtalestøttePodlet` med ønsket visningsmodus.
 
 ---
 
-# Henvendelser
+## Henvendelser
 
-## For Nav-ansatte
+### For Nav-ansatte
 * Dette Git-repositoriet eies av [Team IA i Produktområde arbeidsgiver](https://navno.sharepoint.com/sites/intranett-prosjekter-og-utvikling/SitePages/Produktomr%C3%A5de-arbeidsgiver.aspx).
 * Slack-kanaler:
     * [#arbeidsgiver-teamia-utvikling](https://nav-it.slack.com/archives/C016KJA7CFK)
     * [#arbeidsgiver-utvikling](https://nav-it.slack.com/archives/CD4MES6BB)
     * [#arbeidsgiver-general](https://nav-it.slack.com/archives/CCM649PDH)
 
-## For folk utenfor Nav
+### For folk utenfor Nav
 * Opprett gjerne en issue i Github for alle typer spørsmål
 * IT-utviklerne i Github-teamet https://github.com/orgs/navikt/teams/arbeidsgiver
 * IT-avdelingen i [Arbeids- og velferdsdirektoratet](https://www.nav.no/no/NAV+og+samfunn/Kontakt+NAV/Relatert+informasjon/arbeids-og-velferdsdirektoratet-kontorinformasjon)
