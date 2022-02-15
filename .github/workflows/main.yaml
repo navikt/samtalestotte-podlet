@@ -32,7 +32,7 @@ jobs:
       run: docker build --pull --tag ${IMAGE} . && docker push ${IMAGE}
   deployAppToLabs:
     name: Deploy app to labs-gcp
-    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/tillate-kall-fra-labs-oppfolgingsplanarbeidsgiver'
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/oppgrader-follow-redirects-pga-dependabot-alert'
     needs: compile-test-and-build
     runs-on: ubuntu-18.04
     steps:
