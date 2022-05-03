@@ -32,7 +32,7 @@ jobs:
       run: docker build --pull --tag ${IMAGE} . && docker push ${IMAGE}
   deployAppToLabs:
     name: Deploy app to labs-gcp
-    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/oppgrader-follow-redirects-pga-dependabot-alert'
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/fikse-saarbarhet'
     needs: compile-test-and-build
     runs-on: ubuntu-18.04
     steps:
@@ -45,7 +45,7 @@ jobs:
         RESOURCE: .nais/labs-gcp.yaml
   deployAppToDev-Gcp:
     name: Deploy app to dev-gcp
-    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/oppgradere-navspa-lib'
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/fikse-saarbarhet'
     needs: compile-test-and-build
     runs-on: ubuntu-18.04
     steps:
