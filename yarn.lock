@@ -1445,10 +1445,10 @@
     prop-types "^15.7.2"
     react-is "^16.8.0 || ^17.0.0"
 
-"@navikt/ds-css@^0.7.4":
-  version "0.7.4"
-  resolved "https://registry.yarnpkg.com/@navikt/ds-css/-/ds-css-0.7.4.tgz#b7264756b67c01538a8c6d0aa2f418390641d9c0"
-  integrity sha512-OIPuE6LM6dD0+mLCGK/MPLBwXAT6FBbr2exNIdra6f0HKeNwMYppJAFWZbvmSzeZLLKy+coascN58l9h/wWHyg==
+"@navikt/ds-css@^0.18.7":
+  version "0.18.24"
+  resolved "https://registry.yarnpkg.com/@navikt/ds-css/-/ds-css-0.18.24.tgz#27cdcdb1d03eb127982dbf2228c192f1243c23bb"
+  integrity sha512-AOfH1cVNH3EnUSZCvgRlfkmfO0ys7x+yg1cDnLwsCAcRd9xJQghB+joWGQvj0FFpPOyPt9XLaBzwEFRSoVB/PA==
 
 "@navikt/ds-icons@^0.5.2":
   version "0.5.10"
